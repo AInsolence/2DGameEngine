@@ -780,6 +780,12 @@
     <ClInclude Include="lib\imgui\imstb_truetype.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="src\Constants.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
     <ClInclude Include="lib\SDL2\include\begin_code.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
@@ -1466,6 +1472,9 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="lib\imgui\imgui_widgets.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
