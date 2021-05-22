@@ -1,6 +1,7 @@
 #include "Game.h"
 #include <iostream>
 #include "Constants.h"
+#include "../lib/glm/glm.hpp"
 
 Game::Game()
 {
@@ -70,10 +71,8 @@ void Game::ProcessInput()
 	}
 }
 
-float projectilePosX = 0.0f;
-float projectilePosY = 0.0f;
-float projectileVelX = 30.f;
-float projectileVelY = 20.f;
+glm::vec2 projectilePos = glm::vec2(0.0f, 0.0f);
+glm::vec2 projectileVel = glm::vec2(30.f, 20.f);
 
 void Game::Update()
 {
@@ -94,8 +93,8 @@ void Game::Update()
 	// Clamp DeltaTime to a maximum value
 	DeltaTime = (DeltaTime > 0.05f) ? 0.05f : DeltaTime;
 
-	projectilePosX += projectileVelX * DeltaTime;
-	projectilePosY += projectileVelY * DeltaTime;
+	projectilePos = glm::vec2(projectilePos.x + projectileVel.x * DeltaTime,
+							  projectilePos.y + projectileVel.y * DeltaTime);
 }
 
 void Game::Render()
@@ -106,8 +105,8 @@ void Game::Render()
 	// Create projectile rectangle
 	SDL_Rect Projectile
 	{
-		(int) projectilePosX,
-		(int) projectilePosY,
+		static_cast<int>(projectilePos.x),
+		static_cast<int>(projectilePos.y),
 		10,
 		10
 	};

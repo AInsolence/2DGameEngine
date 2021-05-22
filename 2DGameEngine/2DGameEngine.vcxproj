@@ -145,6 +145,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Component.h" />
+    <ClInclude Include="src\Entity.h" />
+    <ClInclude Include="src\EntityManager.h" />
     <ClInclude Include="lib\SDL2\include\begin_code.h" />
     <ClInclude Include="lib\SDL2\include\close_code.h" />
     <ClInclude Include="lib\SDL2\include\SDL.h" />
@@ -627,6 +630,9 @@
     <None Include="lib\glm\gtx\wrap.inl" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Component.cpp" />
+    <ClCompile Include="src\Entity.cpp" />
+    <ClCompile Include="src\EntityManager.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="lib\glm\detail\glm.cpp" />
     <ClCompile Include="lib\imgui\imgui.cpp" />
