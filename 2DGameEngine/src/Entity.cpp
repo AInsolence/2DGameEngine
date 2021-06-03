@@ -1,5 +1,4 @@
 #include "Entity.h"
-#include "Component.h"
 
 Entity::Entity(EntityManager& manager) : Manager(manager)
 {
@@ -11,9 +10,13 @@ Entity::Entity(EntityManager& manager, std::string name) : Manager(manager), Nam
 	isActive = true;
 }
 
+Entity::~Entity()
+{
+}
+
 void Entity::Update(float DeltaTime)
 {
-	for(Component* component : Components)
+	for(auto& component : Components)
 	{
 		component->Update(DeltaTime);
 	}

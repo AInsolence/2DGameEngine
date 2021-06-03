@@ -4,6 +4,7 @@
 #include "Entity.h"
 #include "Component.h"
 #include <vector>
+#include <memory>
 
 class EntityManager
 {
@@ -14,11 +15,9 @@ public:
 	void ClearData();
 	bool HasNoEntities();
 	Entity& AddEntity(std::string EntityName);
-	std::vector<Entity*> GetEntities() const;
 	unsigned int GetEntityCount() const;
 
-private:
-	std::vector<Entity*> Entities;
+	std::vector<std::unique_ptr<Entity>> Entities;
 };
 
 #endif

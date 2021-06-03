@@ -21,10 +21,11 @@ public:
 	//
 	void Destroy();
 
+	static SDL_Renderer* Renderer;
+
 private:
 	bool bIsRunning = false;
 	SDL_Window* Window = nullptr;
-	SDL_Renderer* Renderer = nullptr;
 	int TicksLastFrame = 0;
 };
 

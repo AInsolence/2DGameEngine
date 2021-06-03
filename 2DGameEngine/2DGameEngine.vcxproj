@@ -494,6 +494,7 @@
     <ClInclude Include="lib\lua\sol.hpp" />
     <ClInclude Include="lib\sol\sol.hpp" />
     <ClInclude Include="src\Constants.h" />
+    <ClInclude Include="src\Components\TransformComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="lib\glm\detail\func_common.inl" />
@@ -641,6 +642,7 @@
     <ClCompile Include="lib\imgui\imgui_sdl.cpp" />
     <ClCompile Include="lib\imgui\imgui_widgets.cpp" />
     <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\Components\TransformComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="lib\lua\liblua54.a" />

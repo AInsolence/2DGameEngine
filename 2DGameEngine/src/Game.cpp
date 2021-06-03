@@ -3,6 +3,8 @@
 #include "Constants.h"
 #include "../lib/glm/glm.hpp"
 
+SDL_Renderer* Game::Renderer;
+
 Game::Game()
 {
 	bIsRunning = false;
@@ -71,9 +73,6 @@ void Game::ProcessInput()
 	}
 }
 
-glm::vec2 projectilePos = glm::vec2(0.0f, 0.0f);
-glm::vec2 projectileVel = glm::vec2(30.f, 20.f);
-
 void Game::Update()
 {
 	// Wait a calculated amount of ms if the current time is not equal time per frame
@@ -93,28 +92,18 @@ void Game::Update()
 	// Clamp DeltaTime to a maximum value
 	DeltaTime = (DeltaTime > 0.05f) ? 0.05f : DeltaTime;
 
-	projectilePos = glm::vec2(projectilePos.x + projectileVel.x * DeltaTime,
-							  projectilePos.y + projectileVel.y * DeltaTime);
+	// TODO: create itaration through all entities and call Update() for all
+
 }
 
 void Game::Render()
 {
 	// Set color and clear all canvas with it (re-draw background)
-	SDL_SetRenderDrawColor(Renderer, 21, 21, 21 , 255);
+	SDL_SetRenderDrawColor(Renderer, 21, 21, 21, 255);
 	SDL_RenderClear(Renderer);
-	// Create projectile rectangle
-	SDL_Rect Projectile
-	{
-		static_cast<int>(projectilePos.x),
-		static_cast<int>(projectilePos.y),
-		10,
-		10
-	};
-	// Set color and draw rectangle
-	SDL_SetRenderDrawColor(Renderer, 255, 255, 255, 255);
-	SDL_RenderFillRect(Renderer, &Projectile);
 	// Swap render buffers
 	SDL_RenderPresent(Renderer);
+	// TODO: create itaration through all entities and call Render() for all
 }
 
 void Game::Destroy()

@@ -31,13 +31,10 @@ bool EntityManager::HasNoEntities()
 
 Entity& EntityManager::AddEntity(std::string EntityName)
 {
-	Entities.push_back(std::move(new Entity(*this, EntityName)));
-	return *Entities.back();
-}
+	Entity* entity = new Entity(*this, EntityName);
+	Entities.emplace_back(entity);
 
-std::vector<Entity*> EntityManager::GetEntities() const
-{
-	return Entities;
+	return *entity;
 }
 
 unsigned int EntityManager::GetEntityCount() const
