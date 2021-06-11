@@ -4,6 +4,9 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <SDL_ttf.h>
+#include <memory>
+#include <functional>
+#include "EntityManager.h"
 
 class Game
 {
@@ -14,18 +17,19 @@ public:
 	bool IsRunning() const;
 	
 	void Initialize(int width, int height);
+	void LoadLevel(unsigned int LevelNumber);
 	//
-	void ProcessInput();
 	void Update();
 	void Render();
+	void ProcessInput();
 	//
 	void Destroy();
 
-	static SDL_Renderer* Renderer;
+	static std::unique_ptr<SDL_Renderer, std::function<void(SDL_Renderer*)>> Renderer;
 
 private:
 	bool bIsRunning = false;
-	SDL_Window* Window = nullptr;
+	std::unique_ptr<SDL_Window, std::function<void(SDL_Window*)>> Window;
 	int TicksLastFrame = 0;
 };
 

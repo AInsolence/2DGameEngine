@@ -1,9 +1,11 @@
 #include "Game.h"
 #include <iostream>
 #include "Constants.h"
+#include "Components/TransformComponent.h"
 #include "../lib/glm/glm.hpp"
 
-SDL_Renderer* Game::Renderer;
+EntityManager Manager;
+std::unique_ptr<SDL_Renderer, std::function<void(SDL_Renderer*)>> Game::Renderer;
 
 Game::Game()
 {
@@ -28,29 +30,75 @@ void Game::Initialize(int width, int height)
 		return;
 	}
 	// Create game window
-	Window = SDL_CreateWindow("2DGameEngineWindow", 
-								SDL_WINDOWPOS_CENTERED, 
+	Window = std::unique_ptr<SDL_Window, std::function<void(SDL_Window*)>>
+								(SDL_CreateWindow("2DGameEngineWindow",
+								SDL_WINDOWPOS_CENTERED,
 								SDL_WINDOWPOS_CENTERED,
 								width,
 								height,
-								0);
+								0), SDL_DestroyWindow);
 	if (!Window)
 	{
 		std::cerr << "Error: Game.cpp Window initialization failed";
 		return;
 	}
 	// Create renderer. -1 parameter means to use standard render driver
-	Renderer = SDL_CreateRenderer(Window, -1, 0);
+	Renderer = std::unique_ptr<SDL_Renderer, std::function<void(SDL_Renderer*)>>
+					(SDL_CreateRenderer(Window.get(), -1, 0), SDL_DestroyRenderer);
 	if (!Renderer)
 	{
 		std::cerr << "Error: Game.cpp Renderer initialization failed";
 		return;
 	}
 
+	// Load level data
+	LoadLevel(0);
+
 	bIsRunning = true;
 	return;
 }
 
+void Game::LoadLevel(unsigned int LevelNumber)
+{
+	Entity& Projectile(Manager.AddEntity("Projectile"));
+	Projectile.AddComponent<TransformComponent>(0, 0, 10, 20, 32, 32, 1.f);
+}
+
+void Game::Update()
+{
+	// Wait a calculated amount of ms if the current time is not equal time per frame
+	int TimeToWait = FRAME_TARGET_TIME - (SDL_GetTicks() - TicksLastFrame);
+	
+	if (TimeToWait > 0 && TimeToWait <= FRAME_TARGET_TIME)
+	{
+		SDL_Delay(TimeToWait);
+	}
+
+	// Delta time is the difference in ticks from the last frame
+	float DeltaTime = (SDL_GetTicks() - TicksLastFrame) / 1000.f;
+
+	// Sets the new ticks for the current frame to be used in the next pass
+	TicksLastFrame = SDL_GetTicks();
+
+	// Clamp DeltaTime to a maximum value
+	DeltaTime = (DeltaTime > 0.05f) ? 0.05f : DeltaTime;
+
+	Manager.Update(DeltaTime);
+}
+
+void Game::Render()
+{
+	// Set color and clear all canvas with it (re-draw background)
+	SDL_SetRenderDrawColor(Renderer.get(), 21, 21, 21, 255);
+	SDL_RenderClear(Renderer.get());
+	// Render all entities on the level
+	if (!Manager.HasNoEntities())
+	{
+		Manager.Render();
+	}
+	// Swap render buffers
+	SDL_RenderPresent(Renderer.get());
+}
 
 void Game::ProcessInput()
 {
@@ -73,42 +121,9 @@ void Game::ProcessInput()
 	}
 }
 
-void Game::Update()
-{
-	// Wait a calculated amount of ms if the current time is not equal time per frame
-	int TimeToWait = FRAME_TARGET_TIME - (SDL_GetTicks() - TicksLastFrame);
-	
-	if (TimeToWait > 0 && TimeToWait <= FRAME_TARGET_TIME)
-	{
-		SDL_Delay(TimeToWait);
-	}
-
-	// Delta time is the difference in ticks from the last frame
-	float DeltaTime = (SDL_GetTicks() - TicksLastFrame) / 1000.f;
-
-	// Sets the new ticks for the current frame to be used in the next pass
-	TicksLastFrame = SDL_GetTicks();
-
-	// Clamp DeltaTime to a maximum value
-	DeltaTime = (DeltaTime > 0.05f) ? 0.05f : DeltaTime;
-
-	// TODO: create itaration through all entities and call Update() for all
-
-}
-
-void Game::Render()
-{
-	// Set color and clear all canvas with it (re-draw background)
-	SDL_SetRenderDrawColor(Renderer, 21, 21, 21, 255);
-	SDL_RenderClear(Renderer);
-	// Swap render buffers
-	SDL_RenderPresent(Renderer);
-	// TODO: create itaration through all entities and call Render() for all
-}
-
 void Game::Destroy()
 {
-	SDL_DestroyRenderer(Renderer);
-	SDL_DestroyWindow(Window);
+	//SDL_DestroyRenderer(Renderer.get());
+	SDL_DestroyWindow(Window.get());
 	SDL_Quit();
 }

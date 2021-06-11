@@ -26,11 +26,11 @@ public:
 	T& AddComponent(TArgs&&... args)
 	{
 		T* component = new T(std::forward<TArgs>(args)...);
-		component->Owner = this;
+		component->SetOwner(this);
 		component->Initialize();
 		Components.emplace_back(component); // explicitly calls unique_ptr constructor
 
-		return component;
+		return *component;
 	}
 
 private:
