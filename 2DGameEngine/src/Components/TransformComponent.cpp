@@ -1,7 +1,6 @@
 #include "TransformComponent.h"
 #include "../Game.h"
 #include <SDL.h>
-#include <iostream>
 
 TransformComponent::TransformComponent(int posX, int posY, int velX, int velY, int _width, int _height, float _scale)
 {
@@ -32,8 +31,4 @@ void TransformComponent::Render()
 										   Height};
 	SDL_SetRenderDrawColor(Game::Renderer.get(), 255, 255, 255, 255);
 	SDL_RenderFillRect(Game::Renderer.get(), &TransformRectangle);
-
-	std::cout << "Rect created and might be rendered" << std::endl;
-	// Swap render buffers
-	SDL_RenderPresent(Game::Renderer.get());
 }

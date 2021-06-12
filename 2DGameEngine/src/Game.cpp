@@ -123,7 +123,5 @@ void Game::ProcessInput()
 
 void Game::Destroy()
 {
-	//SDL_DestroyRenderer(Renderer.get());
-	SDL_DestroyWindow(Window.get());
 	SDL_Quit();
 }
