@@ -4,7 +4,6 @@
 #include "Components/TransformComponent.h"
 #include "../lib/glm/glm.hpp"
 
-EntityManager Manager;
 std::unique_ptr<SDL_Renderer, std::function<void(SDL_Renderer*)>> Game::Renderer;
 
 Game::Game()
@@ -51,6 +50,9 @@ void Game::Initialize(int width, int height)
 		return;
 	}
 
+	// Create entity manager
+	Manager = std::make_shared<EntityManager>(EntityManager());
+	
 	// Load level data
 	LoadLevel(0);
 
@@ -60,8 +62,14 @@ void Game::Initialize(int width, int height)
 
 void Game::LoadLevel(unsigned int LevelNumber)
 {
-	Entity& Projectile(Manager.AddEntity("Projectile"));
+	Entity& Projectile(Manager->AddEntity("Projectile"));
 	Projectile.AddComponent<TransformComponent>(0, 0, 10, 20, 32, 32, 1.f);
+
+	auto Transform = Projectile.GetComponent<TransformComponent>();
+	if (Transform)
+	{
+		std::cout << Transform->Height;
+	}
 }
 
 void Game::Update()
@@ -83,7 +91,7 @@ void Game::Update()
 	// Clamp DeltaTime to a maximum value
 	DeltaTime = (DeltaTime > 0.05f) ? 0.05f : DeltaTime;
 
-	Manager.Update(DeltaTime);
+	Manager->Update(DeltaTime);
 }
 
 void Game::Render()
@@ -92,9 +100,9 @@ void Game::Render()
 	SDL_SetRenderDrawColor(Renderer.get(), 21, 21, 21, 255);
 	SDL_RenderClear(Renderer.get());
 	// Render all entities on the level
-	if (!Manager.HasNoEntities())
+	if (!Manager->HasNoEntities())
 	{
-		Manager.Render();
+		Manager->Render();
 	}
 	// Swap render buffers
 	SDL_RenderPresent(Renderer.get());

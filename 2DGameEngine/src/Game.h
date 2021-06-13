@@ -6,7 +6,7 @@
 #include <SDL_ttf.h>
 #include <memory>
 #include <functional>
-#include "EntityManager.h"
+#include "Managers/EntityManager.h"
 
 class Game
 {
@@ -31,6 +31,7 @@ private:
 	bool bIsRunning = false;
 	std::unique_ptr<SDL_Window, std::function<void(SDL_Window*)>> Window;
 	int TicksLastFrame = 0;
+	std::shared_ptr<EntityManager> Manager;
 };
 
 #endif 

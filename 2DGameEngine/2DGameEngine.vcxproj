@@ -145,9 +145,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Managers\AssetManager.h" />
     <ClInclude Include="src\Component.h" />
     <ClInclude Include="src\Entity.h" />
-    <ClInclude Include="src\EntityManager.h" />
+    <ClInclude Include="src\Managers\EntityManager.h" />
     <ClInclude Include="lib\SDL2\include\begin_code.h" />
     <ClInclude Include="lib\SDL2\include\close_code.h" />
     <ClInclude Include="lib\SDL2\include\SDL.h" />
@@ -495,6 +496,7 @@
     <ClInclude Include="lib\sol\sol.hpp" />
     <ClInclude Include="src\Constants.h" />
     <ClInclude Include="src\Components\TransformComponent.h" />
+    <ClInclude Include="src\Managers\TextureManager.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="lib\glm\detail\func_common.inl" />
@@ -631,9 +633,10 @@
     <None Include="lib\glm\gtx\wrap.inl" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Managers\AssetManager.cpp" />
     <ClCompile Include="src\Component.cpp" />
     <ClCompile Include="src\Entity.cpp" />
-    <ClCompile Include="src\EntityManager.cpp" />
+    <ClCompile Include="src\Managers\EntityManager.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="lib\glm\detail\glm.cpp" />
     <ClCompile Include="lib\imgui\imgui.cpp" />
@@ -643,6 +646,7 @@
     <ClCompile Include="lib\imgui\imgui_widgets.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\Components\TransformComponent.cpp" />
+    <ClCompile Include="src\Managers\TextureManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="lib\lua\liblua54.a" />
