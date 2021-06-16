@@ -4,8 +4,6 @@
 #include <memory>
 #include <map>
 #include <string>
-
-#include "EntityManager.h"
 #include "TextureManager.h"
 
 class EntityManager;

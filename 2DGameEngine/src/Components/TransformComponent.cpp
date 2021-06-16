@@ -25,10 +25,4 @@ void TransformComponent::Update(float DeltaTime)
 
 void TransformComponent::Render()
 {
-	SDL_Rect TransformRectangle = SDL_Rect{static_cast<int>(Position.x),
-										   static_cast<int>(Position.y),
-										   Width,
-										   Height};
-	SDL_SetRenderDrawColor(Game::Renderer.get(), 255, 255, 255, 255);
-	SDL_RenderFillRect(Game::Renderer.get(), &TransformRectangle);
 }

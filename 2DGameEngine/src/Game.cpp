@@ -2,9 +2,13 @@
 #include <iostream>
 #include "Constants.h"
 #include "Components/TransformComponent.h"
+#include "Components/SpriteComponent.h"
 #include "../lib/glm/glm.hpp"
+#include "Managers/EntityManager.h"
+#include "Managers/AssetManager.h"
 
 std::unique_ptr<SDL_Renderer, std::function<void(SDL_Renderer*)>> Game::Renderer;
+std::unique_ptr<AssetManager> Game::AssetsManager;
 
 Game::Game()
 {
@@ -50,8 +54,13 @@ void Game::Initialize(int width, int height)
 		return;
 	}
 
-	// Create entity manager
+	// Create managers
 	Manager = std::make_shared<EntityManager>(EntityManager());
+	if (Manager)
+	{
+		AssetsManager = std::make_unique<AssetManager>(AssetManager(Manager));
+	}
+	
 	
 	// Load level data
 	LoadLevel(0);
@@ -62,10 +71,18 @@ void Game::Initialize(int width, int height)
 
 void Game::LoadLevel(unsigned int LevelNumber)
 {
-	Entity& Projectile(Manager->AddEntity("Projectile"));
-	Projectile.AddComponent<TransformComponent>(0, 0, 10, 20, 32, 32, 1.f);
+	// TODO Only in debug mode
+	std::cout << SDL_GetBasePath() << std::endl;
+	// Load textures to AssetsManager
+	std::string tankTextureFilePath = "assets/images/tank-big-right.png";
+	AssetsManager->AddTexture("tank-big-right", tankTextureFilePath.c_str());
 
-	auto Transform = Projectile.GetComponent<TransformComponent>();
+	// Create entities and components
+	Entity& Tank(Manager->AddEntity("Tank"));
+	Tank.AddComponent<TransformComponent>(0, 0, 10, 20, 32, 32, 1.f);
+	Tank.AddComponent<SpriteComponent>("tank-big-right");
+
+	auto Transform = Tank.GetComponent<TransformComponent>();
 	if (Transform)
 	{
 		std::cout << Transform->Height;

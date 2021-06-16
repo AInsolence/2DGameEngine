@@ -6,7 +6,9 @@
 #include <SDL_ttf.h>
 #include <memory>
 #include <functional>
-#include "Managers/EntityManager.h"
+
+class EntityManager;
+class AssetManager;
 
 class Game
 {
@@ -25,13 +27,15 @@ public:
 	//
 	void Destroy();
 
+	std::shared_ptr<EntityManager> Manager;
+	//
 	static std::unique_ptr<SDL_Renderer, std::function<void(SDL_Renderer*)>> Renderer;
+	static std::unique_ptr<AssetManager> AssetsManager;
 
 private:
 	bool bIsRunning = false;
 	std::unique_ptr<SDL_Window, std::function<void(SDL_Window*)>> Window;
 	int TicksLastFrame = 0;
-	std::shared_ptr<EntityManager> Manager;
 };
 
 #endif 

@@ -15,7 +15,7 @@ public:
 	virtual void Update(float DeltaTime) {}
 	virtual void Render() {}
 
-private:
+protected:
 	Entity* Owner = nullptr;
 };
 

@@ -145,6 +145,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Components\SpriteComponent.h" />
     <ClInclude Include="src\Managers\AssetManager.h" />
     <ClInclude Include="src\Component.h" />
     <ClInclude Include="src\Entity.h" />
@@ -633,6 +634,7 @@
     <None Include="lib\glm\gtx\wrap.inl" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Components\SpriteComponent.cpp" />
     <ClCompile Include="src\Managers\AssetManager.cpp" />
     <ClCompile Include="src\Component.cpp" />
     <ClCompile Include="src\Entity.cpp" />
