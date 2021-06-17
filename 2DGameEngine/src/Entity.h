@@ -23,6 +23,7 @@ public:
 	void Update(float DeltaTime);
 	void Render();
 	void Destroy();
+	void ListAllComponents() const;
 
 	template<typename T, typename... TArgs>
 	T& AddComponent(TArgs&&... args)
@@ -40,6 +41,12 @@ public:
 	std::shared_ptr<T> GetComponent()
 	{
 		return std::static_pointer_cast<T>(ComponentTypeMap[&typeid(T)]);
+	}
+
+	template<typename T>
+	bool HasComponent() const
+	{
+		return ComponentTypeMap.count(&typeid(T));
 	}
 
 private:

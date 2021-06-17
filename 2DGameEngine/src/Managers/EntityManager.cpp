@@ -16,6 +16,14 @@ void EntityManager::Render()
 	}
 }
 
+void EntityManager::ListAllEntities() const
+{
+	for (auto& entity : Entities)
+	{
+		entity->ListAllComponents();
+	}
+}
+
 void EntityManager::ClearData()
 {
 	for (auto& entity : Entities)

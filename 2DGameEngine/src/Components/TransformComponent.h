@@ -16,7 +16,6 @@ public:
 	
 	void Initialize() override;
 	void Update(float DeltaTime) override;
-	void Render() override;
 };
 
 #endif

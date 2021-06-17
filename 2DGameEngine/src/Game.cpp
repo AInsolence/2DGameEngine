@@ -74,15 +74,38 @@ void Game::LoadLevel(unsigned int LevelNumber)
 	// TODO Only in debug mode
 	std::cout << SDL_GetBasePath() << std::endl;
 	// Load textures to AssetsManager
-	std::string tankTextureFilePath = "assets/images/tank-big-right.png";
-	AssetsManager->AddTexture("tank-big-right", tankTextureFilePath.c_str());
+	AssetsManager->AddTexture("tank-big-right", 
+						std::string("assets/images/tank-big-right.png").c_str());
+	AssetsManager->AddTexture("chopper", 
+						std::string("assets/images/chopper-spritesheet.png").c_str());
+	AssetsManager->AddTexture("Radar",
+						std::string("assets/images/radar.png").c_str());
 
 	// Create entities and components
-	Entity& Tank(Manager->AddEntity("Tank"));
-	Tank.AddComponent<TransformComponent>(0, 0, 10, 20, 32, 32, 1.f);
-	Tank.AddComponent<SpriteComponent>("tank-big-right");
+	
+	// Tank 1
+	Entity& Tank1(Manager->AddEntity("Tank1"));
+	Tank1.AddComponent<TransformComponent>(0, 0, 10, 20, 32, 32, 1.f);
+	Tank1.AddComponent<SpriteComponent>("tank-big-right");
 
-	auto Transform = Tank.GetComponent<TransformComponent>();
+	// Tank 2
+	Entity& Tank2(Manager->AddEntity("Tank2"));
+	Tank2.AddComponent<TransformComponent>(600, 0, -20, 30, 32, 32, 1.f);
+	Tank2.AddComponent<SpriteComponent>("tank-big-right");
+
+	// Chopper 1
+	Entity& Chopper1(Manager->AddEntity("Chopper1"));
+	Chopper1.AddComponent<TransformComponent>(300, 0, 0, 30, 32, 32, 2.f);
+	Chopper1.AddComponent<SpriteComponent>("chopper", 2, 60, true, false);
+
+	// Radar
+	Entity& Radar(Manager->AddEntity("Radar"));
+	Radar.AddComponent<TransformComponent>(726, 10, 0, 0, 64, 64, 1.f);
+	Radar.AddComponent<SpriteComponent>("Radar", 8, 100, false, true);
+
+	Manager->ListAllEntities();
+
+	auto Transform = Tank1.GetComponent<TransformComponent>();
 	if (Transform)
 	{
 		std::cout << Transform->Height;
