@@ -3,12 +3,14 @@
 #include "Constants.h"
 #include "Components/TransformComponent.h"
 #include "Components/SpriteComponent.h"
+#include "Components/InputComponent.h"
 #include "../lib/glm/glm.hpp"
 #include "Managers/EntityManager.h"
 #include "Managers/AssetManager.h"
 
 std::unique_ptr<SDL_Renderer, std::function<void(SDL_Renderer*)>> Game::Renderer;
 std::unique_ptr<AssetManager> Game::AssetsManager;
+SDL_Event Game::event;
 
 Game::Game()
 {
@@ -93,10 +95,11 @@ void Game::LoadLevel(unsigned int LevelNumber)
 	Tank2.AddComponent<TransformComponent>(600, 0, -20, 30, 32, 32, 1.f);
 	Tank2.AddComponent<SpriteComponent>("tank-big-right");
 
-	// Chopper 1
+	// Player Chopper
 	Entity& Chopper1(Manager->AddEntity("Chopper1"));
-	Chopper1.AddComponent<TransformComponent>(300, 0, 0, 30, 32, 32, 2.f);
+	Chopper1.AddComponent<TransformComponent>(300, 0, 0, 0, 32, 32, 2.f);
 	Chopper1.AddComponent<SpriteComponent>("chopper", 2, 60, true, false);
+	Chopper1.AddComponent<InputComponent>("up", "right", "down", "left", "space");
 
 	// Radar
 	Entity& Radar(Manager->AddEntity("Radar"));
@@ -150,7 +153,6 @@ void Game::Render()
 
 void Game::ProcessInput()
 {
-	SDL_Event event;
 	SDL_PollEvent(&event);
 
 	switch (event.type)

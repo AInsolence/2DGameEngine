@@ -31,6 +31,7 @@ public:
 	//
 	static std::unique_ptr<SDL_Renderer, std::function<void(SDL_Renderer*)>> Renderer;
 	static std::unique_ptr<AssetManager> AssetsManager;
+	static 	SDL_Event event;
 
 private:
 	bool bIsRunning = false;

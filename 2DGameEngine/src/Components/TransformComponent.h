@@ -10,6 +10,7 @@ public:
 	TransformComponent(int posX, int posY, int velX = 0, int velY = 0, int _width = 0, int _height = 0, float _scale = 1.f);
 	glm::vec2 Position;
 	glm::vec2 Velocity;// TODO move to physics component
+	const int Speed = 20;// TODO move to physics component
 	int Width;
 	int Height;
 	float Scale;

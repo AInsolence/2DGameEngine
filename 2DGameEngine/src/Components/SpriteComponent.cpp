@@ -81,7 +81,7 @@ void SpriteComponent::Render()
 	TextureManager::Draw(Texture, SourceRect, DestinationRect, Flip);
 }
 
-void SpriteComponent::PlayAnimation(std::string& const AnimName)
+void SpriteComponent::PlayAnimation(const std::string& AnimName)
 {
 	CurrentAnimationName = AnimName;
 	AnimationIndex = Animations[AnimName].Index;

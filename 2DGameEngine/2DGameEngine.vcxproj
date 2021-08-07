@@ -145,6 +145,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Components\InputComponent.h" />
     <ClInclude Include="src\Components\Animation.h" />
     <ClInclude Include="src\Components\SpriteComponent.h" />
     <ClInclude Include="src\Managers\AssetManager.h" />
@@ -635,6 +636,7 @@
     <None Include="lib\glm\gtx\wrap.inl" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Components\InputComponent.cpp" />
     <ClCompile Include="src\Components\Animation.cpp" />
     <ClCompile Include="src\Components\SpriteComponent.cpp" />
     <ClCompile Include="src\Managers\AssetManager.cpp" />

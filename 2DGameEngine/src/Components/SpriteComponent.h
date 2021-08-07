@@ -24,6 +24,7 @@ public:
 	void SetTexture(const std::string& AssetTextureID);
 	void Update(float DeltaTime) override;
 	void Render() override;
+	void PlayAnimation(const std::string& AnimName);
 
 	SDL_RendererFlip Flip = SDL_FLIP_NONE;
 
@@ -34,8 +35,6 @@ private:
 	SDL_Rect DestinationRect;
 
 	// Animation
-	void PlayAnimation(std::string& const);
-
 	bool isAnimated = false;
 	bool isFixedPosOnScreen = false;
 	unsigned int NumberOfFrames = 0;
