@@ -37,7 +37,7 @@ bool EntityManager::HasNoEntities()
 	return Entities.size() == 0;
 }
 
-Entity& EntityManager::AddEntity(std::string EntityName)
+Entity& EntityManager::AddEntity(const std::string& EntityName)
 {
 	Entity* entity = new Entity(*this, EntityName);
 	Entities.emplace_back(entity);

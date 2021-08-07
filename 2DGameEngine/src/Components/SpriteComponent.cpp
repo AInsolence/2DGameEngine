@@ -5,12 +5,12 @@
 #include "../Managers/TextureManager.h"
 #include <iostream>
 
-SpriteComponent::SpriteComponent(std::string FilePath)
+SpriteComponent::SpriteComponent(const std::string& FilePath)
 {
 	SetTexture(FilePath);
 }
 
-SpriteComponent::SpriteComponent(std::string FilePath, 
+SpriteComponent::SpriteComponent(const std::string& FilePath,
 								 unsigned int _NumberOfFrames, 
 								 unsigned int _AnimSpeed, 
 								 bool _HasDirection, 
@@ -57,7 +57,7 @@ void SpriteComponent::Initialize()
 	SourceRect.h = TransformComp->Height;
 }
 
-void SpriteComponent::SetTexture(std::string AssetTextureID)
+void SpriteComponent::SetTexture(const std::string& AssetTextureID)
 {
 	Texture = Game::AssetsManager->GetTexture(AssetTextureID);
 }

@@ -14,7 +14,7 @@ public:
 	
 	void ClearData();
 	bool HasNoEntities();
-	Entity& AddEntity(std::string EntityName);
+	Entity& AddEntity(const std::string& EntityName);
 	unsigned int GetEntityCount() const;
 	void ListAllEntities() const;
 

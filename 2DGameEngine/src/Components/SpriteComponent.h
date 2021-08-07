@@ -13,15 +13,15 @@ class TransformComponent;
 class SpriteComponent : public Component
 {
 public:
-	SpriteComponent(std::string FilePath);
-	SpriteComponent(std::string FilePath, 
+	SpriteComponent(const std::string& FilePath);
+	SpriteComponent(const std::string& FilePath,
 					unsigned int _NumberOfFrames, 
 					unsigned int _AnimSpeed, 
 					bool _HasDirection,
 					bool _isFixedPosOnScreen);
 
 	void Initialize() override;
-	void SetTexture(std::string AssetTextureID);
+	void SetTexture(const std::string& AssetTextureID);
 	void Update(float DeltaTime) override;
 	void Render() override;
 

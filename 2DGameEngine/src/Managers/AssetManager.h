@@ -11,11 +11,11 @@ class EntityManager;
 class AssetManager
 {
 public:
-	AssetManager(std::shared_ptr<EntityManager>);
+	AssetManager(const std::shared_ptr<EntityManager>);
 	~AssetManager(){};
 
-	void AddTexture(std::string TextureId, const char* FilePath);
-	std::shared_ptr<SDL_Texture> GetTexture(std::string TextureId);
+	void AddTexture(const std::string& TextureId, const char* FilePath);
+	std::shared_ptr<SDL_Texture> GetTexture(const std::string& TextureId);
 	void ClearData();
 
 private:

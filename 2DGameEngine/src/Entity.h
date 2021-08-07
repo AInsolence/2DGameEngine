@@ -13,8 +13,8 @@ class EntityManager;
 class Entity
 {
 public:
-	Entity(EntityManager& manager);
-	Entity(EntityManager& manager, std::string name);
+	Entity(const EntityManager& manager);
+	Entity(const EntityManager& manager, std::string name);
 	virtual ~Entity();
 
 	inline std::string GetName() const { return Name; }
@@ -50,7 +50,7 @@ public:
 	}
 
 private:
-	EntityManager& Manager;
+	const EntityManager& Manager;
 	std::vector<std::shared_ptr<Component>> Components;
 	std::map<const std::type_info*, std::shared_ptr<Component>> ComponentTypeMap;
 	std::string Name = "none";

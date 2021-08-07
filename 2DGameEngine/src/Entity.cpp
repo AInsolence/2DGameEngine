@@ -1,12 +1,12 @@
 #include "Entity.h"
 #include <iostream>
 
-Entity::Entity(EntityManager& manager) : Manager(manager)
+Entity::Entity(const EntityManager& manager) : Manager(manager)
 {
 	isActive = true;
 }
 
-Entity::Entity(EntityManager& manager, std::string name) : Manager(manager), Name(name)
+Entity::Entity(const EntityManager& manager, std::string name) : Manager(manager), Name(name)
 {
 	isActive = true;
 }
