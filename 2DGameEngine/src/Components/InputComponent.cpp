@@ -1,5 +1,8 @@
 #include "InputComponent.h"
+
 #include "../Game.h"
+#include "../Constants.h"
+
 #include <iostream>
 
 InputComponent::InputComponent(const std::string& _UpKey, 
@@ -26,34 +29,58 @@ void InputComponent::Update(float DeltaTime)
 	if (Game::event.type == SDL_KEYDOWN)
 	{
 		std::string KeyCode = std::to_string(Game::event.key.keysym.sym);
-		std::cout << KeyCode << std::endl;
+		
 		if (!KeyCode.compare(UpKey))
 		{
-			TransformComp->Velocity.y = -1 * TransformComp->Speed;
-			TransformComp->Velocity.x = 0;
-			SpriteComp->PlayAnimation("UpAnimation");
-			std::cout << "UpKey" << std::endl;
+			if (TransformComp->Position.y > 0)
+			{
+				TransformComp->Velocity.y = -1 * TransformComp->Speed;
+				TransformComp->Velocity.x = 0;
+				SpriteComp->PlayAnimation("UpAnimation");
+			}
+			else
+			{
+				TransformComp->Velocity.y = 0;
+			}
 		}
 		if (!KeyCode.compare(RightKey))
 		{
-			TransformComp->Velocity.x = TransformComp->Speed;
-			TransformComp->Velocity.y = 0;
-			SpriteComp->PlayAnimation("RightAnimation");
-			std::cout << "RightKey" << std::endl;
+			if (TransformComp->Position.x < WINDOW_WIDTH - TransformComp->Width * TransformComp->Scale)
+			{
+				TransformComp->Velocity.x = TransformComp->Speed;
+				TransformComp->Velocity.y = 0;
+				SpriteComp->PlayAnimation("RightAnimation");
+			}
+			else
+			{
+				TransformComp->Velocity.x = 0;
+			}
 		}
 		if (!KeyCode.compare(DownKey))
 		{
-			TransformComp->Velocity.y = TransformComp->Speed;
-			TransformComp->Velocity.x = 0;
-			SpriteComp->PlayAnimation("DownAnimation");
-			std::cout << "DownKey" << std::endl;
+			if (TransformComp->Position.y < WINDOW_HEIGHT - TransformComp->Height * TransformComp->Scale)
+			{
+				TransformComp->Velocity.y = TransformComp->Speed;
+				TransformComp->Velocity.x = 0;
+				SpriteComp->PlayAnimation("DownAnimation");
+			}
+			else
+			{
+				TransformComp->Velocity.y = 0;
+			}
 		}
 		if (!KeyCode.compare(LeftKey))
 		{
-			TransformComp->Velocity.x = -1 * TransformComp->Speed;
-			TransformComp->Velocity.y = 0;
-			SpriteComp->PlayAnimation("LeftAnimation");
-			std::cout << "LeftKey" << std::endl;
+			if (TransformComp->Position.x > 0)
+			{
+				TransformComp->Velocity.x = -1 * TransformComp->Speed;
+				TransformComp->Velocity.y = 0;
+				SpriteComp->PlayAnimation("LeftAnimation");
+			}
+			else
+			{
+				TransformComp->Velocity.x = 0;
+			}
 		}
 		if (!KeyCode.compare(FireKey))
 		{
