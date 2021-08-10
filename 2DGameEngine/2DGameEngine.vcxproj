@@ -145,17 +145,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\Components\Animation.h" />
-    <ClInclude Include="src\Components\InputComponent.h" />
-    <ClInclude Include="src\Components\SpriteComponent.h" />
-    <ClInclude Include="src\Components\TileComponent.h" />
-    <ClInclude Include="src\Core\Component.h" />
-    <ClInclude Include="src\Core\Constants.h" />
-    <ClInclude Include="src\Core\Entity.h" />
     <ClInclude Include="src\Core\Map.h" />
+    <ClInclude Include="src\Components\InputComponent.h" />
+    <ClInclude Include="src\Components\Animation.h" />
+    <ClInclude Include="src\Components\SpriteComponent.h" />
     <ClInclude Include="src\Managers\AssetManager.h" />
-    <ClInclude Include="src\Component.h" />
-    <ClInclude Include="src\Entity.h" />
+    <ClInclude Include="src\Core\Component.h" />
+    <ClInclude Include="src\Core\Entity.h" />
     <ClInclude Include="src\Managers\EntityManager.h" />
     <ClInclude Include="lib\SDL2\include\begin_code.h" />
     <ClInclude Include="lib\SDL2\include\close_code.h" />
@@ -502,9 +498,10 @@
     <ClInclude Include="lib\lua\lualib.h" />
     <ClInclude Include="lib\lua\sol.hpp" />
     <ClInclude Include="lib\sol\sol.hpp" />
-    <ClInclude Include="src\Constants.h" />
+    <ClInclude Include="src\Core\Constants.h" />
     <ClInclude Include="src\Components\TransformComponent.h" />
     <ClInclude Include="src\Managers\TextureManager.h" />
+    <ClInclude Include="src\Components\TileComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="lib\glm\detail\func_common.inl" />
@@ -641,14 +638,13 @@
     <None Include="lib\glm\gtx\wrap.inl" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Components\Animation.cpp" />
+    <ClCompile Include="src\Core\Map.cpp" />
     <ClCompile Include="src\Components\InputComponent.cpp" />
+    <ClCompile Include="src\Components\Animation.cpp" />
     <ClCompile Include="src\Components\SpriteComponent.cpp" />
-    <ClCompile Include="src\Components\TileComponent.cpp" />
+    <ClCompile Include="src\Managers\AssetManager.cpp" />
     <ClCompile Include="src\Core\Component.cpp" />
     <ClCompile Include="src\Core\Entity.cpp" />
-    <ClCompile Include="src\Core\Map.cpp" />
-    <ClCompile Include="src\Managers\AssetManager.cpp" />
     <ClCompile Include="src\Managers\EntityManager.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="lib\glm\detail\glm.cpp" />
@@ -660,6 +656,7 @@
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\Components\TransformComponent.cpp" />
     <ClCompile Include="src\Managers\TextureManager.cpp" />
+    <ClCompile Include="src\Components\TileComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="lib\lua\liblua54.a" />
