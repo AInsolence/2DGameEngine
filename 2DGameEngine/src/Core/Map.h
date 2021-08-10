@@ -3,6 +3,11 @@
 
 #include <string>
 
+/*
+	This class read map from the source file and add all
+	tiles as entities to the entity manager
+*/
+
 class Map
 {
 public:
