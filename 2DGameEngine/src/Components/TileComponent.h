@@ -1,7 +1,7 @@
 #ifndef TILECOMPONENT_H
 #define TILECOMPONENT_H
 
-#include "../Component.h"
+#include "../Core/Component.h"
 
 #include <memory>
 #include <string>
@@ -13,10 +13,10 @@ class TileComponent : public Component
 public:
 	TileComponent(int SourceRectX, 
 				  int SourceRectY,
-				  int PositionX,
-				  int PositionY,
+				  float PositionX,
+				  float PositionY,
 				  int TileSize,
-				  int TileScale,
+				  float TileScale,
 				  const std::string& AssetTextureId);
 
 	~TileComponent();

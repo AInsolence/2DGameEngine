@@ -1,8 +1,8 @@
 #ifndef ENTITYMANAGER_H
 #define ENTITYMANAGER_H
 
-#include "../Entity.h"
-#include "../Component.h"
+#include "../Core/Entity.h"
+#include "../Core/Component.h"
 #include <vector>
 #include <memory>
 

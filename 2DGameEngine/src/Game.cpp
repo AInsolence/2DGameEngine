@@ -1,14 +1,19 @@
 #include "Game.h"
 #include <iostream>
-#include "Constants.h"
+#include "../lib/glm/glm.hpp"
+
+#include "Core/Map.h"
+#include "Core/Constants.h"
+
 #include "Components/TransformComponent.h"
 #include "Components/SpriteComponent.h"
 #include "Components/InputComponent.h"
-#include "../lib/glm/glm.hpp"
+
 #include "Managers/EntityManager.h"
 #include "Managers/AssetManager.h"
 
 std::unique_ptr<SDL_Renderer, std::function<void(SDL_Renderer*)>> Game::Renderer;
+std::unique_ptr<EntityManager> Game::EntitiesManager;
 std::unique_ptr<AssetManager> Game::AssetsManager;
 SDL_Event Game::event;
 
@@ -57,10 +62,10 @@ void Game::Initialize(int width, int height)
 	}
 
 	// Create managers
-	Manager = std::make_shared<EntityManager>(EntityManager());
-	if (Manager)
+	EntitiesManager = std::make_unique<EntityManager>();
+	if (EntitiesManager)
 	{
-		AssetsManager = std::make_unique<AssetManager>(AssetManager(Manager));
+		AssetsManager = std::make_unique<AssetManager>();
 	}
 	
 	
@@ -76,6 +81,8 @@ void Game::LoadLevel(unsigned int LevelNumber)
 	// TODO Only in debug mode
 	std::cout << SDL_GetBasePath() << std::endl;
 	// Load textures to AssetsManager
+	AssetsManager->AddTexture("jungle_map_texture",
+						std::string("assets/tilemaps/jungle.png").c_str());
 	AssetsManager->AddTexture("tank-big-right", 
 						std::string("assets/images/tank-big-right.png").c_str());
 	AssetsManager->AddTexture("chopper", 
@@ -84,29 +91,31 @@ void Game::LoadLevel(unsigned int LevelNumber)
 						std::string("assets/images/radar.png").c_str());
 
 	// Create entities and components
+	std::unique_ptr<Map> JungleMap = std::make_unique<Map>("jungle_map_texture", 32, 1.5f);
+	JungleMap->Load("assets/tilemaps/jungle.map", 25, 20);
 	
 	// Tank 1
-	Entity& Tank1(Manager->AddEntity("Tank1"));
+	Entity& Tank1(EntitiesManager->AddEntity("Tank1"));
 	Tank1.AddComponent<TransformComponent>(0, 0, 10, 20, 32, 32, 1.f);
 	Tank1.AddComponent<SpriteComponent>("tank-big-right");
 
 	// Tank 2
-	Entity& Tank2(Manager->AddEntity("Tank2"));
+	Entity& Tank2(EntitiesManager->AddEntity("Tank2"));
 	Tank2.AddComponent<TransformComponent>(600, 0, -20, 30, 32, 32, 1.f);
 	Tank2.AddComponent<SpriteComponent>("tank-big-right");
 
 	// Player Chopper
-	Entity& Chopper1(Manager->AddEntity("Chopper1"));
-	Chopper1.AddComponent<TransformComponent>(300, 0, 0, 0, 32, 32, 2.f);
+	Entity& Chopper1(EntitiesManager->AddEntity("Chopper1"));
+	Chopper1.AddComponent<TransformComponent>(300, 0, 0, 0, 32, 32, 1.5f);
 	Chopper1.AddComponent<SpriteComponent>("chopper", 2, 60, true, false);
 	Chopper1.AddComponent<InputComponent>("up", "right", "down", "left", "space");
 
 	// Radar
-	Entity& Radar(Manager->AddEntity("Radar"));
+	Entity& Radar(EntitiesManager->AddEntity("Radar"));
 	Radar.AddComponent<TransformComponent>(726, 10, 0, 0, 64, 64, 1.f);
 	Radar.AddComponent<SpriteComponent>("Radar", 8, 100, false, true);
 
-	Manager->ListAllEntities();
+	EntitiesManager->ListAllEntities();
 
 	auto Transform = Tank1.GetComponent<TransformComponent>();
 	if (Transform)
@@ -134,7 +143,7 @@ void Game::Update()
 	// Clamp DeltaTime to a maximum value
 	DeltaTime = (DeltaTime > 0.05f) ? 0.05f : DeltaTime;
 
-	Manager->Update(DeltaTime);
+	EntitiesManager->Update(DeltaTime);
 }
 
 void Game::Render()
@@ -143,9 +152,9 @@ void Game::Render()
 	SDL_SetRenderDrawColor(Renderer.get(), 21, 21, 21, 255);
 	SDL_RenderClear(Renderer.get());
 	// Render all entities on the level
-	if (!Manager->HasNoEntities())
+	if (!EntitiesManager->HasNoEntities())
 	{
-		Manager->Render();
+		EntitiesManager->Render();
 	}
 	// Swap render buffers
 	SDL_RenderPresent(Renderer.get());
