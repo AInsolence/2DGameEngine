@@ -8,6 +8,11 @@
 
 class EntityManager;
 
+/*
+	This class stores all textures in a container 
+	and provide the API to get/add new
+*/
+
 class AssetManager
 {
 public:
