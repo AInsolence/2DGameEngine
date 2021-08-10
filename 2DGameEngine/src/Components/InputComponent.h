@@ -1,7 +1,7 @@
 #ifndef INPUTCOMPONENT_H
 #define INPUTCOMPONET_H
 
-#include "../Component.h"
+#include "../Core/Component.h"
 
 #include <string>
 

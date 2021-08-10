@@ -5,7 +5,7 @@
 #include <string>
 #include <map>
 #include <SDL2/include/SDL.h>
-#include "../Component.h"
+#include "../Core/Component.h"
 #include "Animation.h"
 
 class TransformComponent;

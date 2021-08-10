@@ -1,6 +1,6 @@
 #include "AssetManager.h"
 
-AssetManager::AssetManager(const std::shared_ptr<EntityManager> _Manager) : Manager(_Manager)
+AssetManager::AssetManager() 
 {
 }
 

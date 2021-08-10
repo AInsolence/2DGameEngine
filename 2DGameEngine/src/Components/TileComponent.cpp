@@ -3,10 +3,10 @@
 
 TileComponent::TileComponent(int SourceRectX, 
 							 int SourceRectY, 
-							 int PositionX, 
-							 int PositionY, 
+							 float PositionX, 
+							 float PositionY, 
 							 int TileSize, 
-							 int TileScale, 
+							 float TileScale, 
 							 const std::string& AssetTextureId)
 {
 	Texture = Game::AssetsManager->GetTexture(AssetTextureId);

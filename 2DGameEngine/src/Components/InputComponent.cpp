@@ -1,7 +1,7 @@
 #include "InputComponent.h"
 
 #include "../Game.h"
-#include "../Constants.h"
+#include "../Core/Constants.h"
 
 #include <iostream>
 
