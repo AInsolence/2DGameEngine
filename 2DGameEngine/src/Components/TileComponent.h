@@ -7,7 +7,12 @@
 #include <string>
 #include <SDL.h>
 #include <glm/glm.hpp>
-
+/**
+*	This class extends @link Component @endlink class and
+*	shows @link SDL_Texture @endlink with
+*	defined position, source and destination 
+*	rectangles for a tile @link Entity @endlink.
+*/
 class TileComponent : public Component
 {
 public:

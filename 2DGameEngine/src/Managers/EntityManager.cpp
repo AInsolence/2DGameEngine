@@ -1,4 +1,5 @@
 #include "EntityManager.h"
+#include <algorithm>
 
 void EntityManager::Update(float DeltaTime)
 {
@@ -10,6 +11,8 @@ void EntityManager::Update(float DeltaTime)
 
 void EntityManager::Render()
 {
+	SortEntitiesByZOrder();
+	
 	for (auto& entity : Entities)
 	{
 		entity->Render();
@@ -22,6 +25,13 @@ void EntityManager::ListAllEntities() const
 	{
 		entity->ListAllComponents();
 	}
+}
+
+void EntityManager::SortEntitiesByZOrder()
+{
+    std::sort(Entities.begin(), Entities.end(),
+        [](const std::unique_ptr<Entity>& entity_1, const std::unique_ptr<Entity>& entity_2)
+        { return entity_1->GetZOrder() < entity_2->GetZOrder(); });
 }
 
 void EntityManager::ClearData()

@@ -93,22 +93,26 @@ void Game::LoadLevel(unsigned int LevelNumber)
 	// Create entities and components
 	std::unique_ptr<Map> JungleMap = std::make_unique<Map>("jungle_map_texture", 32, 1.5f);
 	JungleMap->Load("assets/tilemaps/jungle.map", 25, 20);
-	
+
+
+    // Player Chopper
+    Entity& Chopper1(EntitiesManager->AddEntity("Chopper1"));
+    Chopper1.AddComponent<TransformComponent>(300, 0, 0, 0, 32, 32, 1.5f);
+    Chopper1.AddComponent<SpriteComponent>("chopper", 2, 60, true, false);
+    Chopper1.AddComponent<InputComponent>("up", "right", "down", "left", "space");
+    Chopper1.SetZOrder(3);
+
 	// Tank 1
 	Entity& Tank1(EntitiesManager->AddEntity("Tank1"));
 	Tank1.AddComponent<TransformComponent>(0, 0, 10, 20, 32, 32, 1.f);
 	Tank1.AddComponent<SpriteComponent>("tank-big-right");
+	Tank1.SetZOrder(2);
 
 	// Tank 2
 	Entity& Tank2(EntitiesManager->AddEntity("Tank2"));
 	Tank2.AddComponent<TransformComponent>(600, 0, -20, 30, 32, 32, 1.f);
 	Tank2.AddComponent<SpriteComponent>("tank-big-right");
-
-	// Player Chopper
-	Entity& Chopper1(EntitiesManager->AddEntity("Chopper1"));
-	Chopper1.AddComponent<TransformComponent>(300, 0, 0, 0, 32, 32, 1.5f);
-	Chopper1.AddComponent<SpriteComponent>("chopper", 2, 60, true, false);
-	Chopper1.AddComponent<InputComponent>("up", "right", "down", "left", "space");
+	Tank2.SetZOrder(2);
 
 	// Radar
 	Entity& Radar(EntitiesManager->AddEntity("Radar"));

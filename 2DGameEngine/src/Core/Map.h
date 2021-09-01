@@ -2,12 +2,11 @@
 #define MAP_H
 
 #include <string>
-
-/*
-	This class read map from the source file and add all
-	tiles as entities to the entity manager
+/**
+*	This class reads map from the source file, adds all
+*	received tiles with a @link TileComponent @endlink
+*	as an @link Entity @endlink to the @link EntityManager @endlink.
 */
-
 class Map
 {
 public:

@@ -9,7 +9,13 @@
 #include "Animation.h"
 
 class TransformComponent;
-
+/**
+*	This class extends @link Component @endlink class as
+*	a sprite component for an @link Entity @endlink. There are
+*	a container for @link Animation @endlink and update functionality. 
+*	Sprite component includes @link TransformComponent @endlink  
+*	@link SDL_Texture @endlink references.
+*/
 class SpriteComponent : public Component
 {
 public:

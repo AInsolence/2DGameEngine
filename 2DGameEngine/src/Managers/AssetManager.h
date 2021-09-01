@@ -8,11 +8,10 @@
 
 class EntityManager;
 
-/*
-	This class stores all textures in a container 
-	and provide the API to get/add new
+/**
+*	This class stores all @link SDL_Texture @endlink in a container 
+*	and provide the API to get/add new one.
 */
-
 class AssetManager
 {
 public:

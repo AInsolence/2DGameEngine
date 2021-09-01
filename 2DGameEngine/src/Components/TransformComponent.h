@@ -3,7 +3,11 @@
 
 #include "../Managers/EntityManager.h"
 #include "../../lib/glm/glm.hpp"
-
+/**
+*	This class extends @link Component @endlink class and
+*	represents @link Entity @endlink's position and transform. 
+*	Note that this component has no Render() method.
+*/
 class TransformComponent : public Component
 {
 public:

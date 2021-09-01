@@ -6,7 +6,20 @@ Entity::Entity(const EntityManager& manager) : Manager(manager)
 	isActive = true;
 }
 
-Entity::Entity(const EntityManager& manager, std::string name) : Manager(manager), Name(name)
+Entity::Entity(const EntityManager& manager, int _ZOrder) 
+	: Manager(manager), ZOrder(_ZOrder)
+{
+    isActive = true;
+}
+
+Entity::Entity(const EntityManager& manager, std::string name) 
+	: Manager(manager), Name(name)
+{
+	isActive = true;
+}
+
+Entity::Entity(const EntityManager& manager, std::string name, int _ZOrder) 
+	: Manager(manager), Name(name), ZOrder(_ZOrder)
 {
 	isActive = true;
 }
@@ -44,4 +57,14 @@ void Entity::ListAllComponents() const
 		std::cout << "    Component: " << component.first->name() << std::endl;
 	}
 	std::cout << std::endl;
+}
+
+void Entity::SetZOrder(int _ZOrder)
+{
+	ZOrder = _ZOrder;
+}
+
+int Entity::GetZOrder() const
+{
+	return ZOrder;
 }

@@ -9,12 +9,19 @@
 #include "Component.h"
 
 class EntityManager;
-
+/**
+*	This class represents a base entity exists into the @link Game @endlink and manages
+*	by the @link EntityManager @endlink. 
+*	Each entity could has a list of @link Component @endlink with a different functionality.
+*/
 class Entity
 {
 public:
 	Entity(const EntityManager& manager);
+	Entity(const EntityManager& manager, int _ZOrder);
 	Entity(const EntityManager& manager, std::string name);
+	Entity(const EntityManager& manager, std::string name, int _ZOrder);
+
 	virtual ~Entity();
 
 	inline std::string GetName() const { return Name; }
@@ -24,6 +31,8 @@ public:
 	void Render();
 	void Destroy();
 	void ListAllComponents() const;
+	void SetZOrder(int _ZOrder);
+	int GetZOrder() const;
 
 	template<typename T, typename... TArgs>
 	T& AddComponent(TArgs&&... args)
@@ -55,6 +64,7 @@ private:
 	std::map<const std::type_info*, std::shared_ptr<Component>> ComponentTypeMap;
 	std::string Name = "none";
 	bool isActive = false;
+	int ZOrder = 0;
 };
 
 #endif

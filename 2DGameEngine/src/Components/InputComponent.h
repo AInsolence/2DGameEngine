@@ -7,7 +7,10 @@
 
 #include  "SpriteComponent.h"
 #include  "TransformComponent.h"
-
+/**
+ *	This class is an input @link Component @endlink 
+ *	for the pawn @link Entity @endlink possessed by player.
+ */
 class InputComponent : public Component
 {
 public:

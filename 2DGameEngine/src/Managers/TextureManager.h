@@ -5,9 +5,9 @@
 #include <functional>
 #include "../Game.h"
 
-/*
-	This class provides static methods
-	to load textures from a file and render(draw) it
+/**
+*	This class provides static methods to LoadTexture()
+*   @link SDL_Texture @endlink from a file and render(Draw()) it
 */
 
 class TextureManager

@@ -9,7 +9,11 @@
 
 class EntityManager;
 class AssetManager;
-
+/**
+ * The main game's class contains SDL_Renderer, @link EntityManager @endlink,
+ * @link AssetManager @endlink, and provides core functionality:
+ * LoadLevel(), Update(), Render() and ProcessInput() methods.
+ */
 class Game
 {
 public:

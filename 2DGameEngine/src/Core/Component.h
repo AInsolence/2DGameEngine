@@ -2,7 +2,11 @@
 #define COMPONENT_H
 
 class Entity;
-
+/**
+*	This is an abstract class for @link Entity @endlink components.
+*	Provides the Initialize(), Update() and Render() methods 
+*	which may be overridden in the child (specific component)class.
+*/
 class Component
 {
 public:

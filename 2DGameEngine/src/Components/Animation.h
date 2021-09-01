@@ -1,6 +1,9 @@
 #ifndef ANIMATION_H
 #define	ANIMATION_H
-
+/**
+ *	Class contains @link SpriteComponent @endlink animation's 
+ *	properties.
+ */
 class Animation
 {
 public:
