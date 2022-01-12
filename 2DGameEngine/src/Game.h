@@ -38,9 +38,9 @@ public:
 	static 	SDL_Event event;
 
 private:
-	bool bIsRunning = false;
+	bool bIsRunning;
 	std::unique_ptr<SDL_Window, std::function<void(SDL_Window*)>> Window;
-	int TicksLastFrame = 0;
+	int TicksLastFrame;
 };
 
 #endif 

@@ -24,7 +24,7 @@ public:
 				  float TileScale,
 				  const std::string& AssetTextureId);
 
-	~TileComponent();
+	virtual ~TileComponent() override;
 
 	void Update(float DeltaTime) override;
 	void Render() override;

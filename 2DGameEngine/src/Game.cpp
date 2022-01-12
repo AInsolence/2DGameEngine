@@ -20,6 +20,7 @@ SDL_Event Game::event;
 Game::Game()
 {
 	bIsRunning = false;
+	TicksLastFrame = 0;
 }
 
 Game::~Game()

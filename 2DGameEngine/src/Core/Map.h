@@ -20,8 +20,8 @@ public:
 
 private:
 	std::string SourceTextureId;
-	int TileSize = 32;
-	float Scale = 1.0f;
+	int TileSize;
+	float Scale;
 };
 
 #endif

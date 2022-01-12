@@ -7,11 +7,12 @@
 class Animation
 {
 public:
-	Animation(){};
+	Animation();
 	Animation(unsigned int _Index, unsigned int _NumberOfFrames, unsigned int _AnimSpeed);
-	unsigned int Index = 0;
-	unsigned int NumberOfFrames = 0;
-	unsigned int AnimSpeed = 0;
+
+	unsigned int Index;
+	unsigned int NumberOfFrames;
+	unsigned int AnimSpeed;
 };
 
 #endif

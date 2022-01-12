@@ -24,8 +24,8 @@ public:
 
 	virtual ~Entity();
 
-	inline std::string GetName() const { return Name; }
-	inline bool bIsActive() const { return isActive; }
+	std::string GetName() const;
+	bool bIsActive() const;
 
 	void Update(float DeltaTime);
 	void Render();
@@ -62,9 +62,9 @@ private:
 	const EntityManager& Manager;
 	std::vector<std::shared_ptr<Component>> Components;
 	std::map<const std::type_info*, std::shared_ptr<Component>> ComponentTypeMap;
-	std::string Name = "none";
-	bool isActive = false;
-	int ZOrder = 0;
+	std::string Name;
+	bool isActive;
+	int ZOrder;
 };
 
 #endif

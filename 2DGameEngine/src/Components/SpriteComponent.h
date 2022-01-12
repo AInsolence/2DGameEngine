@@ -32,7 +32,7 @@ public:
 	void Render() override;
 	void PlayAnimation(const std::string& AnimName);
 
-	SDL_RendererFlip Flip = SDL_FLIP_NONE;
+	SDL_RendererFlip Flip;
 
 private:
 	std::shared_ptr<TransformComponent> TransformComp;
@@ -41,11 +41,11 @@ private:
 	SDL_Rect DestinationRect;
 
 	// Animation
-	bool isAnimated = false;
-	bool isFixedPosOnScreen = false;
-	unsigned int NumberOfFrames = 0;
-	unsigned int AnimSpeed = 0;
-	unsigned int AnimationIndex = 0;
+	bool isAnimated;
+	bool isFixedPosOnScreen;
+	unsigned int NumberOfFrames;
+	unsigned int AnimSpeed;
+	unsigned int AnimationIndex;
 
 	std::string CurrentAnimationName;
 	std::map<std::string, class Animation> Animations;

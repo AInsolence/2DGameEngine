@@ -10,14 +10,14 @@ class Entity;
 class Component
 {
 public:
-	virtual ~Component() {};
+	virtual ~Component();
 
-	inline Entity* GetOwner() const { return Owner; }
+	Entity* GetOwner() const;
 	void SetOwner(Entity* owner);
 
-	virtual void Initialize() {}
-	virtual void Update(float DeltaTime) {}
-	virtual void Render() {}
+	virtual void Initialize();
+	virtual void Update(float DeltaTime);
+	virtual void Render();
 
 protected:
 	Entity* Owner = nullptr;

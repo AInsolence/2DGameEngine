@@ -7,6 +7,15 @@
 
 SpriteComponent::SpriteComponent(const std::string& FilePath)
 {
+	Flip = SDL_FLIP_NONE;
+
+	isAnimated = false;
+	isFixedPosOnScreen = false;
+
+	NumberOfFrames = 0;
+	AnimSpeed = 0;
+	AnimationIndex = 0;
+
 	SetTexture(FilePath);
 }
 
@@ -16,6 +25,8 @@ SpriteComponent::SpriteComponent(const std::string& FilePath,
 								 bool _HasDirection, 
 								 bool _isFixedPosOnScreen)
 {
+	Flip = SDL_FLIP_NONE;
+
 	isAnimated = true;
 	NumberOfFrames = _NumberOfFrames;
 	AnimSpeed = _AnimSpeed;
