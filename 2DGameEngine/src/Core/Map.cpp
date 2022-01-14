@@ -24,24 +24,24 @@ void Map::Load(const std::string& FilePath, int SizeX, int SizeY)
 	std::fstream MapFile;
 	MapFile.open(FilePath);
 
+	int Digit;
+
 	for (int y = 0; y < SizeY; y++)
 	{
 		for (int x = 0; x < SizeX; x++)
-		{
-			char Digit;
+		{			
+			MapFile >> Digit;// Read digit from the map file
 
-			// Tile row position
-			MapFile.get(Digit);
-			int SourceRectY = atoi(&Digit) * TileSize;
-			std::cout << "Tile position: " << Digit; 
-			// Tile column position
-			MapFile.get(Digit);
-			int SourceRectX = atoi(&Digit) * TileSize;
-			std::cout << Digit << std::endl;
+			int SourceRectY = Digit/10 * TileSize; // Tile row position
+			std::cout << "Tile position: " << Digit/10;
+
+			int SourceRectX = Digit%10 * TileSize; // Tile column position
+			std::cout << Digit%10 << std::endl;
+			
 			// Create the tile
 			AddTile(SourceRectX, SourceRectY, x * TileSize * Scale, y * TileSize * Scale);
 
-			// Skip comma
+			//// Skip comma
 			MapFile.ignore();
 		}
 	}

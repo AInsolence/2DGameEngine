@@ -68,8 +68,7 @@ void Game::Initialize(int width, int height)
 	{
 		AssetsManager = std::make_unique<AssetManager>();
 	}
-	
-	
+
 	// Load level data
 	LoadLevel(0);
 
@@ -92,8 +91,8 @@ void Game::LoadLevel(unsigned int LevelNumber)
 						std::string("assets/images/radar.png").c_str());
 
 	// Create entities and components
-	std::unique_ptr<Map> JungleMap = std::make_unique<Map>("jungle_map_texture", 32, 1.5f);
-	JungleMap->Load("assets/tilemaps/jungle.map", 25, 20);
+	std::unique_ptr<Map> JungleMap = std::make_unique<Map>("jungle_map_texture", 32, 1.0f);
+	JungleMap->Load("assets/tilemaps/jungle_02.csv", 25, 20);
 
 
     // Player Chopper
