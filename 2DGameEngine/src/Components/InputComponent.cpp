@@ -84,7 +84,19 @@ void InputComponent::Update(float DeltaTime)
 		}
 		if (!KeyCode.compare(FireKey))
 		{
+			std::cout << "Fire called" << std::endl;
 			// TODO: Fire logic
+			if (Owner->GetZOrder() == 15)
+			{
+				Owner->SetZOrder(3);
+				TransformComp->Scale = 1.5;
+			}
+			else
+			{
+				Owner->SetZOrder(15);
+				TransformComp->Scale = 2;
+			}
+			
 		}
 	}
 

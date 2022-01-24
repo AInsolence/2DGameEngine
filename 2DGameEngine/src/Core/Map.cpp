@@ -33,10 +33,7 @@ void Map::Load(const std::string& FilePath, int SizeX, int SizeY)
 			MapFile >> Digit;// Read digit from the map file
 
 			int SourceRectY = Digit/10 * TileSize; // Tile row position
-			std::cout << "Tile position: " << Digit/10;
-
 			int SourceRectX = Digit%10 * TileSize; // Tile column position
-			std::cout << Digit%10 << std::endl;
 			
 			// Create the tile
 			AddTile(SourceRectX, SourceRectY, x * TileSize * Scale, y * TileSize * Scale);

@@ -34,8 +34,10 @@ public:
 	void SetZOrder(int _ZOrder);
 	int GetZOrder() const;
 
+	void SortComponentsByRelativeZOrder();
+
 	template<typename T, typename... TArgs>
-	T& AddComponent(TArgs&&... args)
+	std::shared_ptr<T> AddComponent(TArgs&&... args)
 	{
 		std::shared_ptr<T> component = std::shared_ptr<T>(new T(std::forward<TArgs>(args)...));
 		component->SetOwner(this);
@@ -43,7 +45,9 @@ public:
 		Components.emplace_back(component);
 		ComponentTypeMap[&typeid(*component)] = component;
 
-		return *component;
+		SortComponentsByRelativeZOrder();
+
+		return component;
 	}
 
 	template<typename T>

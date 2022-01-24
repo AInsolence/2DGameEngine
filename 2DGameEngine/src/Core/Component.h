@@ -19,8 +19,14 @@ public:
 	virtual void Update(float DeltaTime);
 	virtual void Render();
 
+	int GetRelativeZOrder() const;
+	void SetRelativeZOrder(int ZOrder);
+
 protected:
 	Entity* Owner = nullptr;
+
+	// Rendered component's ZOrder (relative to the owner entity), default = 0;
+	int RelativeZOrder;
 };
 
 

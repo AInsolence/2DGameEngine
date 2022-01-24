@@ -105,7 +105,7 @@ void Game::LoadLevel(unsigned int LevelNumber)
 	// Tank 1
 	Entity& Tank1(EntitiesManager->AddEntity("Tank1"));
 	Tank1.AddComponent<TransformComponent>(0, 0, 10, 20, 32, 32, 1.f);
-	Tank1.AddComponent<SpriteComponent>("tank-big-right");
+	Tank1.AddComponent<SpriteComponent>("tank-big-right", 1);
 	Tank1.SetZOrder(2);
 
 	// Tank 2
@@ -117,7 +117,11 @@ void Game::LoadLevel(unsigned int LevelNumber)
 	// Radar
 	Entity& Radar(EntitiesManager->AddEntity("Radar"));
 	Radar.AddComponent<TransformComponent>(726, 10, 0, 0, 64, 64, 1.f);
-	Radar.AddComponent<SpriteComponent>("Radar", 8, 100, false, true);
+	Radar.AddComponent<SpriteComponent>("Radar", 8, 100, false, true, 2);
+	auto TankSprite = Radar.AddComponent<SpriteComponent>("tank-big-right", 1);
+	TankSprite->SetRelativeZOrder(8);
+
+	Radar.SetZOrder(10);
 
 	EntitiesManager->ListAllEntities();
 

@@ -1,5 +1,6 @@
 #include "Entity.h"
 #include <iostream>
+#include <algorithm>
 
 Entity::Entity(const EntityManager& manager) : Manager(manager)
 {
@@ -81,4 +82,11 @@ void Entity::SetZOrder(int _ZOrder)
 int Entity::GetZOrder() const
 {
 	return ZOrder;
+}
+
+void Entity::SortComponentsByRelativeZOrder()
+{
+	std::sort(Components.begin(), Components.end(),
+			[](const std::shared_ptr<Component>& component_1, const std::shared_ptr<Component>& component_2)
+			{ return component_1->GetRelativeZOrder() < component_2->GetRelativeZOrder(); });
 }

@@ -5,7 +5,7 @@
 #include "../Managers/TextureManager.h"
 #include <iostream>
 
-SpriteComponent::SpriteComponent(const std::string& FilePath)
+SpriteComponent::SpriteComponent(const std::string& FilePath, int _RelativeZOrder)
 {
 	Flip = SDL_FLIP_NONE;
 
@@ -15,15 +15,17 @@ SpriteComponent::SpriteComponent(const std::string& FilePath)
 	NumberOfFrames = 0;
 	AnimSpeed = 0;
 	AnimationIndex = 0;
+	RelativeZOrder = _RelativeZOrder;
 
 	SetTexture(FilePath);
 }
 
 SpriteComponent::SpriteComponent(const std::string& FilePath,
-								 unsigned int _NumberOfFrames, 
-								 unsigned int _AnimSpeed, 
-								 bool _HasDirection, 
-								 bool _isFixedPosOnScreen)
+                                 unsigned int _NumberOfFrames, 
+                                 unsigned int _AnimSpeed, 
+                                 bool _HasDirection, 
+                                 bool _isFixedPosOnScreen,
+                                 int _RelativeZOrder)
 {
 	Flip = SDL_FLIP_NONE;
 
@@ -31,6 +33,7 @@ SpriteComponent::SpriteComponent(const std::string& FilePath,
 	NumberOfFrames = _NumberOfFrames;
 	AnimSpeed = _AnimSpeed;
 	isFixedPosOnScreen = _isFixedPosOnScreen;
+	RelativeZOrder = _RelativeZOrder;
 
 	if (_HasDirection)
 	{
