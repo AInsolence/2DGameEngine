@@ -1,4 +1,4 @@
-#include "Game.h"
+#include "GameInstance.h"
 #include <iostream>
 #include "../lib/glm/glm.hpp"
 
@@ -12,37 +12,37 @@
 #include "Managers/EntityManager.h"
 #include "Managers/AssetManager.h"
 
-std::unique_ptr<SDL_Renderer, std::function<void(SDL_Renderer*)>> Game::Renderer;
-std::unique_ptr<EntityManager> Game::EntitiesManager;
-std::unique_ptr<AssetManager> Game::AssetsManager;
-SDL_Event Game::event;
+std::unique_ptr<SDL_Renderer, std::function<void(SDL_Renderer*)>> GameInstance::Renderer;
+std::unique_ptr<EntityManager> GameInstance::EntitiesManager;
+std::unique_ptr<AssetManager> GameInstance::AssetsManager;
+SDL_Event GameInstance::event;
 
-Game::Game()
+GameInstance::GameInstance()
 {
 	bIsRunning = false;
 	TicksLastFrame = 0;
 }
 
-Game::~Game()
+GameInstance::~GameInstance()
 {
 }
 
-bool Game::IsRunning() const
+bool GameInstance::IsRunning() const
 {
 	return bIsRunning;
 }
 
-void Game::Initialize(int width, int height)
+void GameInstance::Initialize(int width, int height)
 {	
 	// Init SDL
 	if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
 	{
-		std::cerr << "Error: Game.cpp SDL inialization failed." << std::endl;
+		std::cerr << "Error: GameInstance.cpp SDL inialization failed." << std::endl;
 		return;
 	}
-	// Create game window
+	// Create GameInstance window
 	Window = std::unique_ptr<SDL_Window, std::function<void(SDL_Window*)>>
-								(SDL_CreateWindow("2DGameEngineWindow",
+								(SDL_CreateWindow("2DGameInstanceEngineWindow",
 								SDL_WINDOWPOS_CENTERED,
 								SDL_WINDOWPOS_CENTERED,
 								width,
@@ -50,7 +50,7 @@ void Game::Initialize(int width, int height)
 								0), SDL_DestroyWindow);
 	if (!Window)
 	{
-		std::cerr << "Error: Game.cpp Window initialization failed";
+		std::cerr << "Error: GameInstance.cpp Window initialization failed";
 		return;
 	}
 	// Create renderer. -1 parameter means to use standard render driver
@@ -58,7 +58,7 @@ void Game::Initialize(int width, int height)
 					(SDL_CreateRenderer(Window.get(), -1, 0), SDL_DestroyRenderer);
 	if (!Renderer)
 	{
-		std::cerr << "Error: Game.cpp Renderer initialization failed";
+		std::cerr << "Error: GameInstance.cpp Renderer initialization failed";
 		return;
 	}
 
@@ -76,7 +76,7 @@ void Game::Initialize(int width, int height)
 	return;
 }
 
-void Game::LoadLevel(unsigned int LevelNumber)
+void GameInstance::LoadLevel(unsigned int LevelNumber)
 {
 	// TODO Only in debug mode
 	std::cout << SDL_GetBasePath() << std::endl;
@@ -132,7 +132,7 @@ void Game::LoadLevel(unsigned int LevelNumber)
 	}
 }
 
-void Game::Update()
+void GameInstance::Update()
 {
 	// Wait a calculated amount of ms if the current time is not equal time per frame
 	int TimeToWait = FRAME_TARGET_TIME - (SDL_GetTicks() - TicksLastFrame);
@@ -154,7 +154,7 @@ void Game::Update()
 	EntitiesManager->Update(DeltaTime);
 }
 
-void Game::Render()
+void GameInstance::Render()
 {
 	// Set color and clear all canvas with it (re-draw background)
 	SDL_SetRenderDrawColor(Renderer.get(), 21, 21, 21, 255);
@@ -168,7 +168,7 @@ void Game::Render()
 	SDL_RenderPresent(Renderer.get());
 }
 
-void Game::ProcessInput()
+void GameInstance::ProcessInput()
 {
 	SDL_PollEvent(&event);
 
@@ -188,7 +188,7 @@ void Game::ProcessInput()
 	}
 }
 
-void Game::Destroy()
+void GameInstance::Destroy()
 {
 	SDL_Quit();
 }

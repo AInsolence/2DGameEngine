@@ -1,6 +1,4 @@
 #include "TransformComponent.h"
-#include "../Game.h"
-#include <SDL.h>
 
 TransformComponent::TransformComponent(int posX, int posY, int velX, int velY, int _width, int _height, float _scale)
 {

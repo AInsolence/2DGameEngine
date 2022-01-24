@@ -2,8 +2,7 @@
 #define TEXTUREMANAGER_H
 
 #include <memory>
-#include <functional>
-#include "../Game.h"
+#include "../GameInstance.h"
 
 /**
 *	This class provides static methods to LoadTexture()

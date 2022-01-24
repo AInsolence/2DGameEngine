@@ -1,22 +1,22 @@
 #include <iostream>
 #include "Core/Constants.h"
-#include "Game.h"
+#include "GameInstance.h"
 /**
- * Entry point with the main @link Game @endlink loop 
+ * Entry point with the main @link GameInstance @endlink loop 
  */
 int main(int argc, char *argv[])
 {
-    Game *game = new Game();
-    game->Initialize(WINDOW_WIDTH, WINDOW_HEIGHT);
+    GameInstance* MyGameInstance = new GameInstance();
+    MyGameInstance->Initialize(WINDOW_WIDTH, WINDOW_HEIGHT);
 
-    while (game->IsRunning())
+    while (MyGameInstance->IsRunning())
     {
-        game->ProcessInput();
-        game->Update();
-        game->Render();
+        MyGameInstance->ProcessInput();
+        MyGameInstance->Update();
+        MyGameInstance->Render();
     }
 
-    game->Destroy();
+    MyGameInstance->Destroy();
 
     return 0;
 }

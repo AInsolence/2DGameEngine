@@ -1,5 +1,5 @@
-#ifndef GAME_H
-#define GAME_H
+#ifndef GAMEINSTANCE_H
+#define GAMEINSTANCE_H
 
 #include <SDL.h>
 #include <SDL_image.h>
@@ -10,15 +10,15 @@
 class EntityManager;
 class AssetManager;
 /**
- * The main game's class contains SDL_Renderer, @link EntityManager @endlink,
+ * The main GameInstance's class contains SDL_Renderer, @link EntityManager @endlink,
  * @link AssetManager @endlink, and provides core functionality:
  * LoadLevel(), Update(), Render() and ProcessInput() methods.
  */
-class Game
+class GameInstance
 {
 public:
-	Game();
-	~Game();
+	GameInstance();
+	~GameInstance();
 
 	bool IsRunning() const;
 	

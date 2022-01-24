@@ -10,7 +10,7 @@
 
 class EntityManager;
 /**
-*	This class represents a base entity exists into the @link Game @endlink and manages
+*	This class represents a base entity exists into the @link GameInstance @endlink and manages
 *	by the @link EntityManager @endlink. 
 *	Each entity could has a list of @link Component @endlink with a different functionality.
 */

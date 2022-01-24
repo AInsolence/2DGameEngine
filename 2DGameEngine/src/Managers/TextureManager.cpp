@@ -4,7 +4,7 @@ std::shared_ptr<SDL_Texture> TextureManager::LoadTexture(const char* FileName)
 {
     SDL_Surface* Surface = IMG_Load(FileName);
     std::shared_ptr<SDL_Texture> Texture(SDL_CreateTextureFromSurface
-                                                 (Game::Renderer.get(),Surface),
+                                                 (GameInstance::Renderer.get(),Surface),
                                                                     SDL_DestroyTexture);
     SDL_FreeSurface(Surface);
 
@@ -16,7 +16,7 @@ void TextureManager::Draw(std::shared_ptr<SDL_Texture> Texture,
                           SDL_Rect DestinationRect, 
                           SDL_RendererFlip Flip)
 {
-    SDL_RenderCopyEx(Game::Renderer.get(),
+    SDL_RenderCopyEx(GameInstance::Renderer.get(),
                      Texture.get(),
                      &SourceRect,
                      &DestinationRect,

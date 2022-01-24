@@ -1,6 +1,6 @@
 #include "InputComponent.h"
 
-#include "../Game.h"
+#include "../GameInstance.h"
 #include "../Core/Constants.h"
 
 #include <iostream>
@@ -26,9 +26,9 @@ void InputComponent::Initialize()
 
 void InputComponent::Update(float DeltaTime)
 {
-	if (Game::event.type == SDL_KEYDOWN)
+	if (GameInstance::event.type == SDL_KEYDOWN)
 	{
-		std::string KeyCode = std::to_string(Game::event.key.keysym.sym);
+		std::string KeyCode = std::to_string(GameInstance::event.key.keysym.sym);
 		
 		if (!KeyCode.compare(UpKey))
 		{
@@ -100,9 +100,9 @@ void InputComponent::Update(float DeltaTime)
 		}
 	}
 
-	if (Game::event.type == SDL_KEYUP)
+	if (GameInstance::event.type == SDL_KEYUP)
 	{
-		std::string KeyCode = std::to_string(Game::event.key.keysym.sym);
+		std::string KeyCode = std::to_string(GameInstance::event.key.keysym.sym);
 		if (KeyCode.compare(UpKey))
 		{
 			TransformComp->Velocity.y = 0;

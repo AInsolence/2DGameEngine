@@ -9,7 +9,7 @@ TileComponent::TileComponent(int SourceRectX,
 							 float TileScale, 
 							 const std::string& AssetTextureId)
 {
-	Texture = Game::AssetsManager->GetTexture(AssetTextureId);
+	Texture = GameInstance::AssetsManager->GetTexture(AssetTextureId);
 
 	SourceRect.x = SourceRectX;
 	SourceRect.y = SourceRectY;

@@ -1,9 +1,8 @@
 #include "SpriteComponent.h"
 #include "TransformComponent.h"
-#include "../Game.h"
+#include "../GameInstance.h"
 #include "../Managers/AssetManager.h"
 #include "../Managers/TextureManager.h"
-#include <iostream>
 
 SpriteComponent::SpriteComponent(const std::string& FilePath, int _RelativeZOrder)
 {
@@ -73,7 +72,7 @@ void SpriteComponent::Initialize()
 
 void SpriteComponent::SetTexture(const std::string& AssetTextureID)
 {
-	Texture = Game::AssetsManager->GetTexture(AssetTextureID);
+	Texture = GameInstance::AssetsManager->GetTexture(AssetTextureID);
 }
 
 void SpriteComponent::Update(float DeltaTime)

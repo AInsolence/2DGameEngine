@@ -149,6 +149,7 @@
     <ClInclude Include="src\Components\InputComponent.h" />
     <ClInclude Include="src\Components\Animation.h" />
     <ClInclude Include="src\Components\SpriteComponent.h" />
+    <ClInclude Include="src\GameInstance.h" />
     <ClInclude Include="src\Managers\AssetManager.h" />
     <ClInclude Include="src\Core\Component.h" />
     <ClInclude Include="src\Core\Entity.h" />
@@ -642,11 +643,11 @@
     <ClCompile Include="src\Components\InputComponent.cpp" />
     <ClCompile Include="src\Components\Animation.cpp" />
     <ClCompile Include="src\Components\SpriteComponent.cpp" />
+    <ClCompile Include="src\GameInstance.cpp" />
     <ClCompile Include="src\Managers\AssetManager.cpp" />
     <ClCompile Include="src\Core\Component.cpp" />
     <ClCompile Include="src\Core\Entity.cpp" />
     <ClCompile Include="src\Managers\EntityManager.cpp" />
-    <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="lib\glm\detail\glm.cpp" />
     <ClCompile Include="lib\imgui\imgui.cpp" />
     <ClCompile Include="lib\imgui\imgui_demo.cpp" />

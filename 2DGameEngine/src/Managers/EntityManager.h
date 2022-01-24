@@ -2,13 +2,12 @@
 #define ENTITYMANAGER_H
 
 #include "../Core/Entity.h"
-#include "../Core/Component.h"
 #include <vector>
 #include <memory>
 
 /**
  * Class represents an entity manager which has a container for all 
- * @link Entity @endlink in the @link Game @endlink, 
+ * @link Entity @endlink in the @link GameInstance @endlink, 
  * include @link Map @endlink tiles for e.g., and manages all of these entities.
  */
 
