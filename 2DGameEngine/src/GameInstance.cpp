@@ -1,6 +1,7 @@
 #include "GameInstance.h"
 #include <iostream>
 #include "../lib/glm/glm.hpp"
+#include "Components/CameraComponent.h"
 
 #include "Core/Map.h"
 #include "Core/Constants.h"
@@ -11,10 +12,12 @@
 
 #include "Managers/EntityManager.h"
 #include "Managers/AssetManager.h"
+#include "Managers/CameraManager.h"
 
 std::unique_ptr<SDL_Renderer, std::function<void(SDL_Renderer*)>> GameInstance::Renderer;
 std::unique_ptr<EntityManager> GameInstance::EntitiesManager;
 std::unique_ptr<AssetManager> GameInstance::AssetsManager;
+std::unique_ptr<CameraManager> GameInstance::CamerasManager;
 SDL_Event GameInstance::event;
 
 GameInstance::GameInstance()
@@ -67,6 +70,7 @@ void GameInstance::Initialize(int width, int height)
 	if (EntitiesManager)
 	{
 		AssetsManager = std::make_unique<AssetManager>();
+		CamerasManager = std::make_unique<CameraManager>();
 	}
 
 	// Load level data
@@ -91,16 +95,17 @@ void GameInstance::LoadLevel(unsigned int LevelNumber)
 						std::string("assets/images/radar.png").c_str());
 
 	// Create entities and components
-	std::unique_ptr<Map> JungleMap = std::make_unique<Map>("jungle_map_texture", 32, 1.0f);
+	std::unique_ptr<Map> JungleMap = std::make_unique<Map>("jungle_map_texture", 32, 1.5f);
 	JungleMap->Load("assets/tilemaps/jungle_02.csv", 25, 20);
 
 
-    // Player Chopper
-    Entity& Chopper1(EntitiesManager->AddEntity("Chopper1"));
-    Chopper1.AddComponent<TransformComponent>(300, 0, 0, 0, 32, 32, 1.5f);
-    Chopper1.AddComponent<SpriteComponent>("chopper", 2, 60, true, false);
-    Chopper1.AddComponent<InputComponent>("up", "right", "down", "left", "space");
-    Chopper1.SetZOrder(3);
+    // Player entity
+    Entity& Player(EntitiesManager->AddEntity("Player"));
+    Player.AddComponent<TransformComponent>(300, 0, 0, 0, 32, 32, 1.5f);
+    Player.AddComponent<SpriteComponent>("chopper", 2, 60, true, false);
+    Player.AddComponent<InputComponent>("up", "right", "down", "left", "space");
+	Player.AddComponent<CameraComponent>(ECameraType::PlayerFollowing);
+    Player.SetZOrder(3);
 
 	// Tank 1
 	Entity& Tank1(EntitiesManager->AddEntity("Tank1"));

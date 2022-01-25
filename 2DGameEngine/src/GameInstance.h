@@ -7,6 +7,7 @@
 #include <memory>
 #include <functional>
 
+class CameraManager;
 class EntityManager;
 class AssetManager;
 /**
@@ -35,6 +36,7 @@ public:
 	static std::unique_ptr<SDL_Renderer, std::function<void(SDL_Renderer*)>> Renderer;
 	static std::unique_ptr<EntityManager> EntitiesManager;
 	static std::unique_ptr<AssetManager> AssetsManager;
+	static std::unique_ptr<CameraManager> CamerasManager;
 	static 	SDL_Event event;
 
 private:

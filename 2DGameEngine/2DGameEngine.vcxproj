@@ -145,6 +145,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Components\CameraComponent.h" />
+    <ClInclude Include="src\Managers\CameraManager.h" />
     <ClInclude Include="src\Core\Map.h" />
     <ClInclude Include="src\Components\InputComponent.h" />
     <ClInclude Include="src\Components\Animation.h" />
@@ -639,6 +641,8 @@
     <None Include="lib\glm\gtx\wrap.inl" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Components\CameraComponent.cpp" />
+    <ClCompile Include="src\Managers\CameraManager.cpp" />
     <ClCompile Include="src\Core\Map.cpp" />
     <ClCompile Include="src\Components\InputComponent.cpp" />
     <ClCompile Include="src\Components\Animation.cpp" />

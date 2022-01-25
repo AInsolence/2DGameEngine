@@ -1,8 +1,11 @@
 #include "SpriteComponent.h"
+
+#include "CameraComponent.h"
 #include "TransformComponent.h"
 #include "../GameInstance.h"
 #include "../Managers/AssetManager.h"
 #include "../Managers/TextureManager.h"
+#include "../Managers/CameraManager.h"
 
 SpriteComponent::SpriteComponent(const std::string& FilePath, int _RelativeZOrder)
 {
@@ -83,8 +86,17 @@ void SpriteComponent::Update(float DeltaTime)
 	}
 	SourceRect.y = AnimationIndex * TransformComp->Height;
 
-	DestinationRect.x = static_cast<int>(TransformComp->Position.x);
-	DestinationRect.y = static_cast<int>(TransformComp->Position.y);
+	if(GameInstance::CamerasManager->GetPlayersWithCamera()[0])
+	{
+		DestinationRect.x = static_cast<int>(TransformComp->Position.x) - GameInstance::CamerasManager->GetPlayersWithCamera()[0]->GetComponent<CameraComponent>()->Camera.x;
+		DestinationRect.y = static_cast<int>(TransformComp->Position.y) - GameInstance::CamerasManager->GetPlayersWithCamera()[0]->GetComponent<CameraComponent>()->Camera.y;
+	}
+	else
+	{
+		DestinationRect.x = static_cast<int>(TransformComp->Position.x);
+		DestinationRect.y = static_cast<int>(TransformComp->Position.y);
+	}
+
 	DestinationRect.w = TransformComp->Width * TransformComp->Scale;
 	DestinationRect.h = TransformComp->Height * TransformComp->Scale;
 }
