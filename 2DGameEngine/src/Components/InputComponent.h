@@ -7,6 +7,7 @@
 
 #include  "SpriteComponent.h"
 #include  "TransformComponent.h"
+class CameraComponent;
 /**
  *	This class is an input @link Component @endlink 
  *	for the pawn @link Entity @endlink possessed by player.
@@ -26,6 +27,8 @@ public:
 protected:
 	std::shared_ptr<SpriteComponent> SpriteComp;
 	std::shared_ptr<TransformComponent> TransformComp;
+	std::shared_ptr<CameraComponent> CameraComp;
+
 
 	std::string UpKey;
 	std::string RightKey;

@@ -95,13 +95,13 @@ void GameInstance::LoadLevel(unsigned int LevelNumber)
 						std::string("assets/images/radar.png").c_str());
 
 	// Create entities and components
-	std::unique_ptr<Map> JungleMap = std::make_unique<Map>("jungle_map_texture", 32, 1.5f);
+	std::unique_ptr<Map> JungleMap = std::make_unique<Map>("jungle_map_texture", 32, 1.0f);
 	JungleMap->Load("assets/tilemaps/jungle_02.csv", 25, 20);
 
 
     // Player entity
     Entity& Player(EntitiesManager->AddEntity("Player"));
-    Player.AddComponent<TransformComponent>(300, 0, 0, 0, 32, 32, 1.5f);
+    Player.AddComponent<TransformComponent>(300, 0, 0, 0, 32, 32, 1.0f);
     Player.AddComponent<SpriteComponent>("chopper", 2, 60, true, false);
     Player.AddComponent<InputComponent>("up", "right", "down", "left", "space");
 	Player.AddComponent<CameraComponent>(ECameraType::PlayerFollowing);
@@ -123,7 +123,7 @@ void GameInstance::LoadLevel(unsigned int LevelNumber)
 	Entity& Radar(EntitiesManager->AddEntity("Radar"));
 	Radar.AddComponent<TransformComponent>(726, 10, 0, 0, 64, 64, 1.f);
 	Radar.AddComponent<SpriteComponent>("Radar", 8, 100, false, true, 2);
-	auto TankSprite = Radar.AddComponent<SpriteComponent>("tank-big-right", 1);
+	auto TankSprite = Radar.AddComponent<SpriteComponent>("tank-big-right", 1, true);
 	TankSprite->SetRelativeZOrder(8);
 
 	Radar.SetZOrder(10);

@@ -19,6 +19,11 @@ void CameraComponent::Update(float DeltaTime)
 	{
 		Camera.x = TransformComp->Position.x - (WINDOW_WIDTH / 2);
 		Camera.y = TransformComp->Position.y - (WINDOW_HEIGHT / 2);
+		// Clamp camera on the map
+		Camera.x = Camera.x < 0 ? 0 : Camera.x;
+		Camera.y = Camera.y < 0 ? 0 : Camera.y;
+		Camera.x = Camera.x > Camera.w ? Camera.w : Camera.x;
+		Camera.y = Camera.y > Camera.h ? Camera.h : Camera.y;
 	}
 }
 

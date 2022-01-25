@@ -19,7 +19,7 @@ class TransformComponent;
 class SpriteComponent : public Component
 {
 public:
-	SpriteComponent(const std::string& FilePath, int _RelativeZOrder = 0);
+	SpriteComponent(const std::string& FilePath, bool _isFixedPosOnScreen = false, int _RelativeZOrder = 0);
 	SpriteComponent(const std::string& FilePath,
 					unsigned int _NumberOfFrames, 
 					unsigned int _AnimSpeed, 

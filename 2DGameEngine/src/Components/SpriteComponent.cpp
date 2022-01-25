@@ -7,12 +7,14 @@
 #include "../Managers/TextureManager.h"
 #include "../Managers/CameraManager.h"
 
-SpriteComponent::SpriteComponent(const std::string& FilePath, int _RelativeZOrder)
+SpriteComponent::SpriteComponent(const std::string& FilePath, 
+								 bool _isFixedPosOnScreen, 
+								 int _RelativeZOrder)
 {
 	Flip = SDL_FLIP_NONE;
 
 	isAnimated = false;
-	isFixedPosOnScreen = false;
+	isFixedPosOnScreen = _isFixedPosOnScreen;
 
 	NumberOfFrames = 0;
 	AnimSpeed = 0;
@@ -86,7 +88,7 @@ void SpriteComponent::Update(float DeltaTime)
 	}
 	SourceRect.y = AnimationIndex * TransformComp->Height;
 
-	if(GameInstance::CamerasManager->GetPlayersWithCamera()[0])
+	if(!isFixedPosOnScreen && GameInstance::CamerasManager->GetPlayersWithCamera()[0])
 	{
 		DestinationRect.x = static_cast<int>(TransformComp->Position.x) - GameInstance::CamerasManager->GetPlayersWithCamera()[0]->GetComponent<CameraComponent>()->Camera.x;
 		DestinationRect.y = static_cast<int>(TransformComp->Position.y) - GameInstance::CamerasManager->GetPlayersWithCamera()[0]->GetComponent<CameraComponent>()->Camera.y;
