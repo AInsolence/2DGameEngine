@@ -10,4 +10,7 @@ constexpr unsigned int WINDOW_HEIGHT = 600;
 constexpr unsigned int FPS = 60;
 constexpr unsigned int FRAME_TARGET_TIME = 1000 / FPS;
 
+// TODO: replace with Mao manager functionality
+constexpr float SCREEN_SCALE = 2.0f;
+
 #endif

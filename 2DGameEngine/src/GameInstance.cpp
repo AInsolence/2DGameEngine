@@ -15,9 +15,9 @@
 #include "Managers/CameraManager.h"
 
 std::unique_ptr<SDL_Renderer, std::function<void(SDL_Renderer*)>> GameInstance::Renderer;
-std::unique_ptr<EntityManager> GameInstance::EntitiesManager;
-std::unique_ptr<AssetManager> GameInstance::AssetsManager;
-std::unique_ptr<CameraManager> GameInstance::CamerasManager;
+std::shared_ptr<EntityManager> GameInstance::EntitiesManager;
+std::shared_ptr<AssetManager> GameInstance::AssetsManager;
+std::shared_ptr<CameraManager> GameInstance::CamerasManager;
 SDL_Event GameInstance::event;
 
 GameInstance::GameInstance()
@@ -43,7 +43,7 @@ void GameInstance::Initialize(int width, int height)
 		std::cerr << "Error: GameInstance.cpp SDL inialization failed." << std::endl;
 		return;
 	}
-	// Create GameInstance window
+	// Create GameInstance's window
 	Window = std::unique_ptr<SDL_Window, std::function<void(SDL_Window*)>>
 								(SDL_CreateWindow("2DGameInstanceEngineWindow",
 								SDL_WINDOWPOS_CENTERED,
@@ -66,11 +66,11 @@ void GameInstance::Initialize(int width, int height)
 	}
 
 	// Create managers
-	EntitiesManager = std::make_unique<EntityManager>();
+	EntitiesManager = std::make_shared<EntityManager>();
 	if (EntitiesManager)
 	{
-		AssetsManager = std::make_unique<AssetManager>();
-		CamerasManager = std::make_unique<CameraManager>();
+		AssetsManager = std::make_shared<AssetManager>();
+		CamerasManager = std::make_shared<CameraManager>();
 	}
 
 	// Load level data
@@ -95,42 +95,39 @@ void GameInstance::LoadLevel(unsigned int LevelNumber)
 						std::string("assets/images/radar.png").c_str());
 
 	// Create entities and components
-	std::unique_ptr<Map> JungleMap = std::make_unique<Map>("jungle_map_texture", 32, 1.0f);
+	std::shared_ptr<Map> JungleMap = std::make_unique<Map>("jungle_map_texture", 32, SCREEN_SCALE);
 	JungleMap->Load("assets/tilemaps/jungle_02.csv", 25, 20);
 
 
     // Player entity
-    Entity& Player(EntitiesManager->AddEntity("Player"));
-    Player.AddComponent<TransformComponent>(300, 0, 0, 0, 32, 32, 1.0f);
-    Player.AddComponent<SpriteComponent>("chopper", 2, 60, true, false);
-    Player.AddComponent<InputComponent>("up", "right", "down", "left", "space");
-	Player.AddComponent<CameraComponent>(ECameraType::PlayerFollowing);
-    Player.SetZOrder(3);
+    auto Player(EntitiesManager->AddEntity("Player"));
+    Player->AddComponent<TransformComponent>(300, 0, 0, 0, 32, 32, 1.0f);
+    Player->AddComponent<SpriteComponent>("chopper", 2, 60, true, false);
+    Player->AddComponent<InputComponent>("up", "right", "down", "left", "space");
+	Player->AddComponent<CameraComponent>(ECameraType::PlayerFollowing);
+    Player->SetZOrder(3);
 
 	// Tank 1
-	Entity& Tank1(EntitiesManager->AddEntity("Tank1"));
-	Tank1.AddComponent<TransformComponent>(0, 0, 10, 20, 32, 32, 1.f);
-	Tank1.AddComponent<SpriteComponent>("tank-big-right", 1);
-	Tank1.SetZOrder(2);
+	auto Tank1(EntitiesManager->AddEntity("Tank1"));
+	Tank1->AddComponent<TransformComponent>(0, 0, 10, 20, 32, 32, 1.f);
+	Tank1->AddComponent<SpriteComponent>("tank-big-right", false);
+	Tank1->SetZOrder(2);
 
 	// Tank 2
-	Entity& Tank2(EntitiesManager->AddEntity("Tank2"));
-	Tank2.AddComponent<TransformComponent>(600, 0, -20, 30, 32, 32, 1.f);
-	Tank2.AddComponent<SpriteComponent>("tank-big-right");
-	Tank2.SetZOrder(2);
+	auto Tank2(EntitiesManager->AddEntity("Tank2"));
+	Tank2->AddComponent<TransformComponent>(600, 0, -20, 30, 32, 32, 1.f);
+	Tank2->AddComponent<SpriteComponent>("tank-big-right");
+	Tank2->SetZOrder(2);
 
 	// Radar
-	Entity& Radar(EntitiesManager->AddEntity("Radar"));
-	Radar.AddComponent<TransformComponent>(726, 10, 0, 0, 64, 64, 1.f);
-	Radar.AddComponent<SpriteComponent>("Radar", 8, 100, false, true, 2);
-	auto TankSprite = Radar.AddComponent<SpriteComponent>("tank-big-right", 1, true);
-	TankSprite->SetRelativeZOrder(8);
-
-	Radar.SetZOrder(10);
+	auto Radar(EntitiesManager->AddEntity("Radar"));
+	Radar->AddComponent<TransformComponent>(726, 10, 0, 0, 64, 64, 1.f);
+	Radar->AddComponent<SpriteComponent>("Radar", 8, 100, false, true, 2);
+	Radar->SetZOrder(10);
 
 	EntitiesManager->ListAllEntities();
 
-	auto Transform = Tank1.GetComponent<TransformComponent>();
+	auto Transform = Tank1->GetComponent<TransformComponent>();
 	if (Transform)
 	{
 		std::cout << Transform->Height;

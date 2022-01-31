@@ -34,6 +34,6 @@ void CameraComponent::Initialize()
 	
 	Camera.x = 0;
 	Camera.y = 0;
-	Camera.w = TransformComp->Width;
-	Camera.h = TransformComp->Height;
+	Camera.w = WINDOW_WIDTH;
+	Camera.h = WINDOW_HEIGHT;
 }

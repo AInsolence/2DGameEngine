@@ -30,7 +30,7 @@ void EntityManager::ListAllEntities() const
 void EntityManager::SortEntitiesByZOrder()
 {
     std::sort(Entities.begin(), Entities.end(),
-        [](const std::unique_ptr<Entity>& entity_1, const std::unique_ptr<Entity>& entity_2)
+        [](const std::shared_ptr<Entity>& entity_1, const std::shared_ptr<Entity>& entity_2)
         { return entity_1->GetZOrder() < entity_2->GetZOrder(); });
 }
 
@@ -47,12 +47,12 @@ bool EntityManager::HasNoEntities()
 	return Entities.size() == 0;
 }
 
-Entity& EntityManager::AddEntity(const std::string& EntityName)
+std::shared_ptr<Entity> EntityManager::AddEntity(const std::string& EntityName)
 {
-	Entity* entity = new Entity(*this, EntityName);
+	auto entity = std::make_shared<Entity>(shared_from_this(), EntityName);
 	Entities.emplace_back(entity);
 
-	return *entity;
+	return entity;
 }
 
 unsigned int EntityManager::GetEntityCount() const

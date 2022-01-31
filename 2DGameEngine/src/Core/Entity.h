@@ -14,13 +14,13 @@ class EntityManager;
 *	by the @link EntityManager @endlink. 
 *	Each entity could has a list of @link Component @endlink with a different functionality.
 */
-class Entity
+class Entity : public std::enable_shared_from_this<Entity>
 {
 public:
-	Entity(const EntityManager& manager);
-	Entity(const EntityManager& manager, int _ZOrder);
-	Entity(const EntityManager& manager, std::string name);
-	Entity(const EntityManager& manager, std::string name, int _ZOrder);
+	Entity(std::shared_ptr<EntityManager> manager);
+	Entity(std::shared_ptr<EntityManager> manager, int _ZOrder);
+	Entity(std::shared_ptr<EntityManager> manager, const std::string& name);
+	Entity(std::shared_ptr<EntityManager> manager, const std::string& name, int _ZOrder);
 
 	virtual ~Entity();
 
@@ -40,7 +40,7 @@ public:
 	std::shared_ptr<T> AddComponent(TArgs&&... args)
 	{
 		std::shared_ptr<T> component = std::shared_ptr<T>(new T(std::forward<TArgs>(args)...));
-		component->SetOwner(this);
+		component->SetOwner(shared_from_this());
 		component->Initialize();
 		Components.emplace_back(component);
 		ComponentTypeMap[&typeid(*component)] = component;
@@ -63,7 +63,7 @@ public:
 	}
 
 private:
-	const EntityManager& Manager;
+	std::shared_ptr<EntityManager> Manager;
 	std::vector<std::shared_ptr<Component>> Components;
 	std::map<const std::type_info*, std::shared_ptr<Component>> ComponentTypeMap;
 	std::string Name;

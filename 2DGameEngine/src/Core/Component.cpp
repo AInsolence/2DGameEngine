@@ -9,14 +9,14 @@ Component::~Component()
 	RelativeZOrder = 0;
 }
 
-Entity* Component::GetOwner() const
+std::shared_ptr<Entity> Component::GetOwner() const
 {
 	return Owner;
 }
 
-void Component::SetOwner(Entity* owner)
+void Component::SetOwner(std::shared_ptr<Entity> owner)
 {
-	Owner = owner;
+	Owner = std::move(owner);
 }
 
 void Component::Initialize()

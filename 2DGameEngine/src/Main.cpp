@@ -6,7 +6,7 @@
  */
 int main(int argc, char *argv[])
 {
-    GameInstance* MyGameInstance = new GameInstance();
+    auto MyGameInstance = std::make_unique<GameInstance>();
     MyGameInstance->Initialize(WINDOW_WIDTH, WINDOW_HEIGHT);
 
     while (MyGameInstance->IsRunning())
@@ -15,8 +15,6 @@ int main(int argc, char *argv[])
         MyGameInstance->Update();
         MyGameInstance->Render();
     }
-
-    MyGameInstance->Destroy();
 
     return 0;
 }

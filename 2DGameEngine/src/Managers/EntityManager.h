@@ -11,13 +11,13 @@
  * include @link Map @endlink tiles for e.g., and manages all of these entities.
  */
 
-class EntityManager
+class EntityManager : public std::enable_shared_from_this<EntityManager>
 {
 public:
 	void Update(float DeltaTime);
 	void Render();
 
-	Entity& AddEntity(const std::string& EntityName);
+	std::shared_ptr<Entity> AddEntity(const std::string& EntityName);
 
 	void ClearData();
 	bool HasNoEntities();
@@ -28,7 +28,7 @@ public:
 	void SortEntitiesByZOrder();
 
 private:
-	std::vector<std::unique_ptr<Entity>> Entities;
+	std::vector<std::shared_ptr<Entity>> Entities;
 };
 
 #endif

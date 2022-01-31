@@ -7,7 +7,7 @@ const std::vector<std::shared_ptr<Entity>>& CameraManager::GetPlayersWithCamera(
 	return PlayersWithCamera;
 }
 
-void CameraManager::AddPlayerWithCamera(Entity* PlayerWithCamera)
+void CameraManager::AddPlayerWithCamera(std::shared_ptr<Entity> PlayerWithCamera)
 {
 	PlayersWithCamera.emplace_back(PlayerWithCamera);
 }

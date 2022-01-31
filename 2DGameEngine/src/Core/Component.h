@@ -1,5 +1,6 @@
 #ifndef COMPONENT_H
 #define COMPONENT_H
+#include <memory>
 
 class Entity;
 /**
@@ -12,8 +13,8 @@ class Component
 public:
 	virtual ~Component();
 
-	Entity* GetOwner() const;
-	void SetOwner(Entity* owner);
+	std::shared_ptr<Entity> GetOwner() const;
+	void SetOwner(std::shared_ptr<Entity> owner);
 
 	virtual void Initialize();
 	virtual void Update(float DeltaTime);
@@ -23,7 +24,7 @@ public:
 	void SetRelativeZOrder(int ZOrder);
 
 protected:
-	Entity* Owner = nullptr;
+	std::shared_ptr<Entity> Owner;
 
 	// Rendered component's ZOrder (relative to the owner entity), default = 0;
 	int RelativeZOrder;

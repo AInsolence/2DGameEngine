@@ -14,7 +14,7 @@ class CameraManager
 {
 public:
 	const std::vector<std::shared_ptr<Entity>>& GetPlayersWithCamera() const;
-	void AddPlayerWithCamera(Entity* PlayerWithCamera);
+	void AddPlayerWithCamera(std::shared_ptr<Entity> PlayerWithCamera);
 
 protected:
 	std::vector<std::shared_ptr<Entity>> PlayersWithCamera;

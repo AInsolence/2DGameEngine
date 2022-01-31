@@ -2,28 +2,28 @@
 #include <iostream>
 #include <algorithm>
 
-Entity::Entity(const EntityManager& manager) : Manager(manager)
+Entity::Entity(std::shared_ptr<EntityManager> manager) : Manager(manager)
 {
 	isActive = true;
 	Name = "none";
 	ZOrder = 0;
 }
 
-Entity::Entity(const EntityManager& manager, int _ZOrder) 
+Entity::Entity(std::shared_ptr<EntityManager> manager, int _ZOrder) 
 	: Manager(manager), ZOrder(_ZOrder)
 {
     isActive = true;
 	Name = "none";
 }
 
-Entity::Entity(const EntityManager& manager, std::string name) 
+Entity::Entity(std::shared_ptr<EntityManager> manager, const std::string& name) 
 	: Manager(manager), Name(name)
 {
 	isActive = true;
 	ZOrder = 0;
 }
 
-Entity::Entity(const EntityManager& manager, std::string name, int _ZOrder) 
+Entity::Entity(std::shared_ptr<EntityManager> manager, const std::string& name, int _ZOrder) 
 	: Manager(manager), Name(name), ZOrder(_ZOrder)
 {
 	isActive = true;

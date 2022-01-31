@@ -99,8 +99,8 @@ void SpriteComponent::Update(float DeltaTime)
 		DestinationRect.y = static_cast<int>(TransformComp->Position.y);
 	}
 
-	DestinationRect.w = TransformComp->Width * TransformComp->Scale;
-	DestinationRect.h = TransformComp->Height * TransformComp->Scale;
+	DestinationRect.w = TransformComp->Width;
+	DestinationRect.h = TransformComp->Height;
 }
 
 void SpriteComponent::Render()

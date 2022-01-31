@@ -34,14 +34,15 @@ public:
 
 	//
 	static std::unique_ptr<SDL_Renderer, std::function<void(SDL_Renderer*)>> Renderer;
-	static std::unique_ptr<EntityManager> EntitiesManager;
-	static std::unique_ptr<AssetManager> AssetsManager;
-	static std::unique_ptr<CameraManager> CamerasManager;
+	static std::shared_ptr<EntityManager> EntitiesManager;
+	static std::shared_ptr<AssetManager> AssetsManager;
+	static std::shared_ptr<CameraManager> CamerasManager;
 	static 	SDL_Event event;
 
 private:
-	bool bIsRunning;
 	std::unique_ptr<SDL_Window, std::function<void(SDL_Window*)>> Window;
+
+	bool bIsRunning;
 	int TicksLastFrame;
 };
 

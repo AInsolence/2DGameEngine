@@ -47,12 +47,12 @@ void Map::Load(const std::string& FilePath, int SizeX, int SizeY)
 
 void Map::AddTile(int SourceX, int SourceY, float PositionX, float PositionY)
 {
-	auto& Tile = GameInstance::EntitiesManager->AddEntity("Tile");
-	Tile.AddComponent<TileComponent>(SourceX,
-									 SourceY,
-									 PositionX,
-									 PositionY,
-									 TileSize,
-									 Scale,
-									 SourceTextureId);
+	const auto Tile = GameInstance::EntitiesManager->AddEntity("Tile");
+	Tile->AddComponent<TileComponent>(SourceX,
+									  SourceY,
+									  PositionX,
+									  PositionY,
+									  TileSize,
+									  Scale,
+									  SourceTextureId);
 }

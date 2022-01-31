@@ -45,7 +45,7 @@ void InputComponent::Update(float DeltaTime)
 		}
 		if (!KeyCode.compare(RightKey))
 		{
-			if (TransformComp->Position.x < WINDOW_WIDTH - TransformComp->Width * TransformComp->Scale)
+			if (TransformComp->Position.x < WINDOW_WIDTH * SCREEN_SCALE - TransformComp->Width * TransformComp->Scale)
 			{
 				TransformComp->Velocity.x = TransformComp->Speed;
 				TransformComp->Velocity.y = 0;
@@ -58,7 +58,7 @@ void InputComponent::Update(float DeltaTime)
 		}
 		if (!KeyCode.compare(DownKey))
 		{
-			if (TransformComp->Position.y < WINDOW_HEIGHT - TransformComp->Height * TransformComp->Scale)
+			if (TransformComp->Position.y < WINDOW_HEIGHT * SCREEN_SCALE - TransformComp->Height * TransformComp->Scale)
 			{
 				TransformComp->Velocity.y = TransformComp->Speed;
 				TransformComp->Velocity.x = 0;
