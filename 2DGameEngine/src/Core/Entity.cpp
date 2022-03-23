@@ -45,7 +45,7 @@ bool Entity::bIsActive() const
 
 void Entity::Update(float DeltaTime)
 {
-	for(auto& component : Components)
+	for(const auto& component : Components)
 	{
 		component->Update(DeltaTime);
 	}
