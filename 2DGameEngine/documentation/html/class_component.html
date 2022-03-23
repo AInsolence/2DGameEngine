@@ -78,36 +78,46 @@ Inheritance diagram for Component:</div>
  <div class="center">
   <img src="class_component.png" usemap="#Component_map" alt=""/>
   <map id="Component_map" name="Component_map">
-<area href="class_input_component.html" alt="InputComponent" shape="rect" coords="0,56,132,80"/>
-<area href="class_sprite_component.html" alt="SpriteComponent" shape="rect" coords="142,56,274,80"/>
-<area href="class_tile_component.html" alt="TileComponent" shape="rect" coords="284,56,416,80"/>
-<area href="class_transform_component.html" alt="TransformComponent" shape="rect" coords="426,56,558,80"/>
+<area href="class_camera_component.html" alt="CameraComponent" shape="rect" coords="0,56,132,80"/>
+<area href="class_input_component.html" alt="InputComponent" shape="rect" coords="142,56,274,80"/>
+<area href="class_sprite_component.html" alt="SpriteComponent" shape="rect" coords="284,56,416,80"/>
+<area href="class_tile_component.html" alt="TileComponent" shape="rect" coords="426,56,558,80"/>
+<area href="class_transform_component.html" alt="TransformComponent" shape="rect" coords="568,56,700,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a9b502efadc22b491d6577e3341e28c32"><td class="memItemLeft" align="right" valign="top"><a id="a9b502efadc22b491d6577e3341e28c32"></a>
-<a class="el" href="class_entity.html">Entity</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>GetOwner</b> () const</td></tr>
-<tr class="separator:a9b502efadc22b491d6577e3341e28c32"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae248456fd8e373b4678588f40e58e649"><td class="memItemLeft" align="right" valign="top"><a id="ae248456fd8e373b4678588f40e58e649"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetOwner</b> (<a class="el" href="class_entity.html">Entity</a> *owner)</td></tr>
-<tr class="separator:ae248456fd8e373b4678588f40e58e649"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7037e9b900ae3ea82e0650a692a55f54"><td class="memItemLeft" align="right" valign="top"><a id="a7037e9b900ae3ea82e0650a692a55f54"></a>
+<tr class="memitem:a5f1e0c5552905caee24b73d12bedc700"><td class="memItemLeft" align="right" valign="top"><a id="a5f1e0c5552905caee24b73d12bedc700"></a>
+std::shared_ptr&lt; <a class="el" href="class_entity.html">Entity</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>GetOwner</b> () const</td></tr>
+<tr class="separator:a5f1e0c5552905caee24b73d12bedc700"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63ceea0bfb2b20a5aa87cc2c3a195bbf"><td class="memItemLeft" align="right" valign="top"><a id="a63ceea0bfb2b20a5aa87cc2c3a195bbf"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetOwner</b> (std::shared_ptr&lt; <a class="el" href="class_entity.html">Entity</a> &gt; owner)</td></tr>
+<tr class="separator:a63ceea0bfb2b20a5aa87cc2c3a195bbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab835279d93c5182d313351e6c453d64a"><td class="memItemLeft" align="right" valign="top"><a id="ab835279d93c5182d313351e6c453d64a"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>Initialize</b> ()</td></tr>
-<tr class="separator:a7037e9b900ae3ea82e0650a692a55f54"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac6251f626c5456443fc25bc1d7774011"><td class="memItemLeft" align="right" valign="top"><a id="ac6251f626c5456443fc25bc1d7774011"></a>
+<tr class="separator:ab835279d93c5182d313351e6c453d64a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae45601d1982df5b87d3e2018ef5ab6e5"><td class="memItemLeft" align="right" valign="top"><a id="ae45601d1982df5b87d3e2018ef5ab6e5"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>Update</b> (float DeltaTime)</td></tr>
-<tr class="separator:ac6251f626c5456443fc25bc1d7774011"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa01692c6b2244621e9ab2b56ceedcf5c"><td class="memItemLeft" align="right" valign="top"><a id="aa01692c6b2244621e9ab2b56ceedcf5c"></a>
+<tr class="separator:ae45601d1982df5b87d3e2018ef5ab6e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22275746474021b2e1e36d4a58d48cfd"><td class="memItemLeft" align="right" valign="top"><a id="a22275746474021b2e1e36d4a58d48cfd"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>Render</b> ()</td></tr>
-<tr class="separator:aa01692c6b2244621e9ab2b56ceedcf5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a22275746474021b2e1e36d4a58d48cfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a942104e88e6af2975e1213c78122957f"><td class="memItemLeft" align="right" valign="top"><a id="a942104e88e6af2975e1213c78122957f"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>GetRelativeZOrder</b> () const</td></tr>
+<tr class="separator:a942104e88e6af2975e1213c78122957f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad237653fcdb78be4fd9fb565319ba30"><td class="memItemLeft" align="right" valign="top"><a id="aad237653fcdb78be4fd9fb565319ba30"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetRelativeZOrder</b> (int ZOrder)</td></tr>
+<tr class="separator:aad237653fcdb78be4fd9fb565319ba30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:a0f05729a9548a42b73932af1efb1a1ca"><td class="memItemLeft" align="right" valign="top"><a id="a0f05729a9548a42b73932af1efb1a1ca"></a>
-<a class="el" href="class_entity.html">Entity</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>Owner</b> = nullptr</td></tr>
-<tr class="separator:a0f05729a9548a42b73932af1efb1a1ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca0452909e19807aacc0a9dd8a7f8466"><td class="memItemLeft" align="right" valign="top"><a id="aca0452909e19807aacc0a9dd8a7f8466"></a>
+std::shared_ptr&lt; <a class="el" href="class_entity.html">Entity</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>Owner</b></td></tr>
+<tr class="separator:aca0452909e19807aacc0a9dd8a7f8466"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9664f1b189908206e998d74e0b779f71"><td class="memItemLeft" align="right" valign="top"><a id="a9664f1b189908206e998d74e0b779f71"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>RelativeZOrder</b></td></tr>
+<tr class="separator:a9664f1b189908206e998d74e0b779f71"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This is an abstract class for <a class="el" href="class_entity.html">Entity</a> components. Provides the Initialize(), Update() and Render() methods which may be overridden in the child (specific component)class. </p>

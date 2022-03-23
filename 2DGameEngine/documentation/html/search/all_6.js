@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['spritecomponent_8',['SpriteComponent',['../class_sprite_component.html',1,'']]]
+  ['map_11',['Map',['../class_map.html',1,'']]]
 ];

@@ -71,21 +71,27 @@ $(function() {
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="_entity_8h_source.html">Entity.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for Entity:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_entity.png" alt=""/>
+ </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a6790079a03d485dadc53662d9d23f526"><td class="memItemLeft" align="right" valign="top"><a id="a6790079a03d485dadc53662d9d23f526"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Entity</b> (const <a class="el" href="class_entity_manager.html">EntityManager</a> &amp;manager)</td></tr>
-<tr class="separator:a6790079a03d485dadc53662d9d23f526"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afe883f402e365da9169da7fdf4e1f89c"><td class="memItemLeft" align="right" valign="top"><a id="afe883f402e365da9169da7fdf4e1f89c"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Entity</b> (const <a class="el" href="class_entity_manager.html">EntityManager</a> &amp;manager, int _ZOrder)</td></tr>
-<tr class="separator:afe883f402e365da9169da7fdf4e1f89c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a185cb66aec36067eadb19f86f4f4a14e"><td class="memItemLeft" align="right" valign="top"><a id="a185cb66aec36067eadb19f86f4f4a14e"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Entity</b> (const <a class="el" href="class_entity_manager.html">EntityManager</a> &amp;manager, std::string name)</td></tr>
-<tr class="separator:a185cb66aec36067eadb19f86f4f4a14e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a09dfb101354af041e2ed9a9663eb4691"><td class="memItemLeft" align="right" valign="top"><a id="a09dfb101354af041e2ed9a9663eb4691"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Entity</b> (const <a class="el" href="class_entity_manager.html">EntityManager</a> &amp;manager, std::string name, int _ZOrder)</td></tr>
-<tr class="separator:a09dfb101354af041e2ed9a9663eb4691"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abeaef65fbce2d9e5ef79924079f55b40"><td class="memItemLeft" align="right" valign="top"><a id="abeaef65fbce2d9e5ef79924079f55b40"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Entity</b> (std::shared_ptr&lt; <a class="el" href="class_entity_manager.html">EntityManager</a> &gt; manager)</td></tr>
+<tr class="separator:abeaef65fbce2d9e5ef79924079f55b40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15c4deb59c6e101181a0ad8f287feed6"><td class="memItemLeft" align="right" valign="top"><a id="a15c4deb59c6e101181a0ad8f287feed6"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Entity</b> (std::shared_ptr&lt; <a class="el" href="class_entity_manager.html">EntityManager</a> &gt; manager, int _ZOrder)</td></tr>
+<tr class="separator:a15c4deb59c6e101181a0ad8f287feed6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5646fcbbb7f5c2fbc3b51672b9250c38"><td class="memItemLeft" align="right" valign="top"><a id="a5646fcbbb7f5c2fbc3b51672b9250c38"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Entity</b> (std::shared_ptr&lt; <a class="el" href="class_entity_manager.html">EntityManager</a> &gt; manager, const std::string &amp;name)</td></tr>
+<tr class="separator:a5646fcbbb7f5c2fbc3b51672b9250c38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d5ee81ac78c81f43364c6cfb06fe055"><td class="memItemLeft" align="right" valign="top"><a id="a0d5ee81ac78c81f43364c6cfb06fe055"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Entity</b> (std::shared_ptr&lt; <a class="el" href="class_entity_manager.html">EntityManager</a> &gt; manager, const std::string &amp;name, int _ZOrder)</td></tr>
+<tr class="separator:a0d5ee81ac78c81f43364c6cfb06fe055"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1d72f5003f9eed6edb81c17ff4f888cd"><td class="memItemLeft" align="right" valign="top"><a id="a1d72f5003f9eed6edb81c17ff4f888cd"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>GetName</b> () const</td></tr>
 <tr class="separator:a1d72f5003f9eed6edb81c17ff4f888cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -110,10 +116,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>SetZOrder</b> (int _Z
 <tr class="memitem:a390efd5deba0512f55686bbd46762f09"><td class="memItemLeft" align="right" valign="top"><a id="a390efd5deba0512f55686bbd46762f09"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>GetZOrder</b> () const</td></tr>
 <tr class="separator:a390efd5deba0512f55686bbd46762f09"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a78bb7f1e7520abf82bb53bd7acf36035"><td class="memTemplParams" colspan="2"><a id="a78bb7f1e7520abf82bb53bd7acf36035"></a>
+<tr class="memitem:af5feaf08263f1f4a4b4c007e02117f16"><td class="memItemLeft" align="right" valign="top"><a id="af5feaf08263f1f4a4b4c007e02117f16"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SortComponentsByRelativeZOrder</b> ()</td></tr>
+<tr class="separator:af5feaf08263f1f4a4b4c007e02117f16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ddb4881bb4c58ee0eafc3f0cc1013df"><td class="memTemplParams" colspan="2"><a id="a7ddb4881bb4c58ee0eafc3f0cc1013df"></a>
 template&lt;typename T , typename... TArgs&gt; </td></tr>
-<tr class="memitem:a78bb7f1e7520abf82bb53bd7acf36035"><td class="memTemplItemLeft" align="right" valign="top">T &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>AddComponent</b> (TArgs &amp;&amp;... args)</td></tr>
-<tr class="separator:a78bb7f1e7520abf82bb53bd7acf36035"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ddb4881bb4c58ee0eafc3f0cc1013df"><td class="memTemplItemLeft" align="right" valign="top">std::shared_ptr&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>AddComponent</b> (TArgs &amp;&amp;... args)</td></tr>
+<tr class="separator:a7ddb4881bb4c58ee0eafc3f0cc1013df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad5cf8774322cc838147e43866a475546"><td class="memTemplParams" colspan="2"><a id="ad5cf8774322cc838147e43866a475546"></a>
 template&lt;typename T &gt; </td></tr>
 <tr class="memitem:ad5cf8774322cc838147e43866a475546"><td class="memTemplItemLeft" align="right" valign="top">std::shared_ptr&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>GetComponent</b> ()</td></tr>
@@ -124,7 +133,7 @@ template&lt;typename T &gt; </td></tr>
 <tr class="separator:a21a5c382bca76fadf22668d51439f3a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This class represents a base entity exists into the <a class="el" href="class_game.html">Game</a> and manages by the <a class="el" href="class_entity_manager.html">EntityManager</a>. Each entity could has a list of <a class="el" href="class_component.html">Component</a> with a different functionality. </p>
+<div class="textblock"><p>This class represents a base entity exists into the <a class="el" href="class_game_instance.html">GameInstance</a> and manages by the <a class="el" href="class_entity_manager.html">EntityManager</a>. Each entity could has a list of <a class="el" href="class_component.html">Component</a> with a different functionality. </p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>C:/Users/anton/source/repos/2DGameEngine/2DGameEngine/src/Core/<a class="el" href="_entity_8h_source.html">Entity.h</a></li>
 <li>C:/Users/anton/source/repos/2DGameEngine/2DGameEngine/src/Core/Entity.cpp</li>

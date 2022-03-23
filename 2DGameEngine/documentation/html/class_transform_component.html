@@ -94,15 +94,21 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Initialize</b> () ove
 void&#160;</td><td class="memItemRight" valign="bottom"><b>Update</b> (float DeltaTime) override</td></tr>
 <tr class="separator:a38ea09977784466283342e486f580fcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_component"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_component')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_component.html">Component</a></td></tr>
-<tr class="memitem:a9b502efadc22b491d6577e3341e28c32 inherit pub_methods_class_component"><td class="memItemLeft" align="right" valign="top"><a id="a9b502efadc22b491d6577e3341e28c32"></a>
-<a class="el" href="class_entity.html">Entity</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>GetOwner</b> () const</td></tr>
-<tr class="separator:a9b502efadc22b491d6577e3341e28c32 inherit pub_methods_class_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae248456fd8e373b4678588f40e58e649 inherit pub_methods_class_component"><td class="memItemLeft" align="right" valign="top"><a id="ae248456fd8e373b4678588f40e58e649"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetOwner</b> (<a class="el" href="class_entity.html">Entity</a> *owner)</td></tr>
-<tr class="separator:ae248456fd8e373b4678588f40e58e649 inherit pub_methods_class_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa01692c6b2244621e9ab2b56ceedcf5c inherit pub_methods_class_component"><td class="memItemLeft" align="right" valign="top"><a id="aa01692c6b2244621e9ab2b56ceedcf5c"></a>
+<tr class="memitem:a5f1e0c5552905caee24b73d12bedc700 inherit pub_methods_class_component"><td class="memItemLeft" align="right" valign="top"><a id="a5f1e0c5552905caee24b73d12bedc700"></a>
+std::shared_ptr&lt; <a class="el" href="class_entity.html">Entity</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>GetOwner</b> () const</td></tr>
+<tr class="separator:a5f1e0c5552905caee24b73d12bedc700 inherit pub_methods_class_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63ceea0bfb2b20a5aa87cc2c3a195bbf inherit pub_methods_class_component"><td class="memItemLeft" align="right" valign="top"><a id="a63ceea0bfb2b20a5aa87cc2c3a195bbf"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetOwner</b> (std::shared_ptr&lt; <a class="el" href="class_entity.html">Entity</a> &gt; owner)</td></tr>
+<tr class="separator:a63ceea0bfb2b20a5aa87cc2c3a195bbf inherit pub_methods_class_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22275746474021b2e1e36d4a58d48cfd inherit pub_methods_class_component"><td class="memItemLeft" align="right" valign="top"><a id="a22275746474021b2e1e36d4a58d48cfd"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>Render</b> ()</td></tr>
-<tr class="separator:aa01692c6b2244621e9ab2b56ceedcf5c inherit pub_methods_class_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a22275746474021b2e1e36d4a58d48cfd inherit pub_methods_class_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a942104e88e6af2975e1213c78122957f inherit pub_methods_class_component"><td class="memItemLeft" align="right" valign="top"><a id="a942104e88e6af2975e1213c78122957f"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>GetRelativeZOrder</b> () const</td></tr>
+<tr class="separator:a942104e88e6af2975e1213c78122957f inherit pub_methods_class_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad237653fcdb78be4fd9fb565319ba30 inherit pub_methods_class_component"><td class="memItemLeft" align="right" valign="top"><a id="aad237653fcdb78be4fd9fb565319ba30"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetRelativeZOrder</b> (int ZOrder)</td></tr>
+<tr class="separator:aad237653fcdb78be4fd9fb565319ba30 inherit pub_methods_class_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -128,9 +134,12 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>Scale</b></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_attribs_class_component"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_class_component')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_component.html">Component</a></td></tr>
-<tr class="memitem:a0f05729a9548a42b73932af1efb1a1ca inherit pro_attribs_class_component"><td class="memItemLeft" align="right" valign="top"><a id="a0f05729a9548a42b73932af1efb1a1ca"></a>
-<a class="el" href="class_entity.html">Entity</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>Owner</b> = nullptr</td></tr>
-<tr class="separator:a0f05729a9548a42b73932af1efb1a1ca inherit pro_attribs_class_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca0452909e19807aacc0a9dd8a7f8466 inherit pro_attribs_class_component"><td class="memItemLeft" align="right" valign="top"><a id="aca0452909e19807aacc0a9dd8a7f8466"></a>
+std::shared_ptr&lt; <a class="el" href="class_entity.html">Entity</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>Owner</b></td></tr>
+<tr class="separator:aca0452909e19807aacc0a9dd8a7f8466 inherit pro_attribs_class_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9664f1b189908206e998d74e0b779f71 inherit pro_attribs_class_component"><td class="memItemLeft" align="right" valign="top"><a id="a9664f1b189908206e998d74e0b779f71"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>RelativeZOrder</b></td></tr>
+<tr class="separator:a9664f1b189908206e998d74e0b779f71 inherit pro_attribs_class_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This class extends <a class="el" href="class_component.html">Component</a> class and represents <a class="el" href="class_entity.html">Entity</a>'s position and transform. Note that this component has no Render() method. </p>

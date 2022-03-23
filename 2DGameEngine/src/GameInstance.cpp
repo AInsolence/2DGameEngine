@@ -91,8 +91,16 @@ void GameInstance::LoadLevel(unsigned int LevelNumber)
 						std::string("assets/images/tank-big-right.png").c_str());
 	AssetsManager->AddTexture("chopper", 
 						std::string("assets/images/chopper-spritesheet.png").c_str());
-	AssetsManager->AddTexture("Radar",
-						std::string("assets/images/radar.png").c_str());
+	AssetsManager->AddTexture("radar_report",
+						std::string("assets/images/HUD/radar_report.png").c_str());
+	AssetsManager->AddTexture("emergency",
+						std::string("assets/images/HUD/emergency.png").c_str());
+	AssetsManager->AddTexture("webb-asst",
+						std::string("assets/images/HUD/webb-asst.png").c_str());
+	AssetsManager->AddTexture("ners_rog",
+						std::string("assets/images/HUD/ners_rog.png").c_str());
+	AssetsManager->AddTexture("altimeter",
+						std::string("assets/images/HUD/altimeter.png").c_str());
 
 	// Create entities and components
 	std::shared_ptr<Map> JungleMap = std::make_unique<Map>("jungle_map_texture", 32, SCREEN_SCALE);
@@ -119,11 +127,40 @@ void GameInstance::LoadLevel(unsigned int LevelNumber)
 	Tank2->AddComponent<SpriteComponent>("tank-big-right");
 	Tank2->SetZOrder(2);
 
+	/// *** HUD starts here ***///
+	
 	// Radar
 	auto Radar(EntitiesManager->AddEntity("Radar"));
-	Radar->AddComponent<TransformComponent>(726, 10, 0, 0, 64, 64, 1.f);
-	Radar->AddComponent<SpriteComponent>("Radar", 8, 100, false, true, 2);
+	Radar->AddComponent<TransformComponent>(WINDOW_WIDTH - 170*0.5f, 0, 0, 0, 171, 171, 0.5f);
+	Radar->AddComponent<SpriteComponent>("radar_report", 15, 100, false, true, 2);
 	Radar->SetZOrder(10);
+
+	// Emergency
+	auto Emergency(EntitiesManager->AddEntity("Emergency"));
+	Emergency->AddComponent<TransformComponent>(0, 0, 0, 0, 171, 171, 0.5f);
+	Emergency->AddComponent<SpriteComponent>("emergency", 15, 100, false, true, 2);
+	Emergency->SetZOrder(10);
+
+	// Altimeter
+	auto Altimeter(EntitiesManager->AddEntity("Altimeter"));
+	Altimeter->AddComponent<TransformComponent>(0, WINDOW_HEIGHT - 170, 0, 0, 171, 171, 0.5f);
+	Altimeter->AddComponent<SpriteComponent>("altimeter", 15, 100, false, true, 2);
+	Altimeter->SetZOrder(10);
+
+	// Webb-asst
+	auto WebbAsst(EntitiesManager->AddEntity("WebbAsst"));
+	WebbAsst->AddComponent<TransformComponent>(0, WINDOW_HEIGHT - 170*0.5f, 0, 0, 171, 171, 0.5f);
+	WebbAsst->AddComponent<SpriteComponent>("webb-asst", 15, 100, false, true, 2);
+	WebbAsst->SetZOrder(10);
+
+	// Ners-rog
+	auto NersRog(EntitiesManager->AddEntity("NersRog"));
+	NersRog->AddComponent<TransformComponent>(170*0.5f, WINDOW_HEIGHT - 170*0.5f, 0, 0, 171, 171, 0.5f);
+	NersRog->AddComponent<SpriteComponent>("ners_rog", 15, 100, false, true, 2);
+	NersRog->SetZOrder(10);
+
+	/// *** HUD END ***///
+
 
 	EntitiesManager->ListAllEntities();
 

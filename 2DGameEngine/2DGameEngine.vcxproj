@@ -145,6 +145,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Managers\EventManager.h" />
     <ClInclude Include="src\Components\CameraComponent.h" />
     <ClInclude Include="src\Managers\CameraManager.h" />
     <ClInclude Include="src\Core\Map.h" />
@@ -641,6 +642,7 @@
     <None Include="lib\glm\gtx\wrap.inl" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Managers\EventManager.cpp" />
     <ClCompile Include="src\Components\CameraComponent.cpp" />
     <ClCompile Include="src\Managers\CameraManager.cpp" />
     <ClCompile Include="src\Core\Map.cpp" />

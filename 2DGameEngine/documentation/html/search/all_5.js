@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['map_7',['Map',['../class_map.html',1,'']]]
+  ['loadlevel_10',['LoadLevel',['../class_game_instance.html#a92e1bc5fba2d10e3c7375b3335dd9144',1,'GameInstance']]]
 ];
